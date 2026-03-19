@@ -101,7 +101,7 @@ namespace CarApp
                 return 0;
             }
 
-            return (distance / kmPrLiter) * fuelPrice;
+            return Math.Round((distance / kmPrLiter) * fuelPrice, 2);
         }
 
         static void IsPalindrome(double odometer, ref bool palindrome)
@@ -129,6 +129,7 @@ namespace CarApp
             Console.WriteLine($"Odometer pre-trip:      {odometer - distance}");
             Console.WriteLine($"Odometer post-trip:     {odometer}");
             Console.WriteLine($"Fuel price for trip:    {tripPrice}");
+            Console.WriteLine(string.Format("Fuel expenses for {0} km is {1} DKK", distance, tripPrice));
         }
     }
 }
