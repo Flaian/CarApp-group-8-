@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp4
 {
-    internal class FuelType
+    public class FuelType
     { public enum fuelType
         {
 			Benzin,

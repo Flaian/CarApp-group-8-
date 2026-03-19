@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp4
 {
-    internal class Engine
+    public class Engine
     {
 		// private field
 		private bool _isRunning;

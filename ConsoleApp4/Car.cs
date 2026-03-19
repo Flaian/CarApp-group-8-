@@ -26,7 +26,7 @@ namespace ConsoleApp4
 
 
 
-		public Car(string brand,string model,int  year, string licensePlate,FuelType fuelType, double KmPerLiter, double Odometer) 
+		public Car(string brand,string model,int  year, string licensePlate,FuelType fuelType, double kmPerLiter, double Odometer) 
         {
 			Brand = brand;
 
@@ -59,14 +59,14 @@ namespace ConsoleApp4
                 Console.WriteLine("Fej: Denne tur tilhører ikke denne bil.");
             }
 
-
+            
 
 
 			}
 
 
 
-
+        public List<Trip> GetTrips() => _trips;
 
 
         
