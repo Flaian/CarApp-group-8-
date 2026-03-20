@@ -10,7 +10,7 @@
             : base(brand, model, year, licensePlate)
         {
             BatteryCapacity = batteryCapacity;
-            BatteryLevel = kmPerKwh;
+            KmPerKwh = kmPerKwh;
             BatteryLevel = batteryCapacity;
         }
 

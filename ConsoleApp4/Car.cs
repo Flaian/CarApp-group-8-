@@ -31,8 +31,9 @@
             if (IsEngineOn)
             {
                 Odometer += trip.Distance;
-                UpdateEnergyLevel(trip.Distance);
                 _trips.Add(trip);
+
+                UpdateEnergyLevel(trip.Distance);
             }
             else
             {
@@ -40,10 +41,19 @@
             }
         }
 
-        public void TurnOnEngine() { IsEngineOn = true; }
-        public void TurnOffEngine() { IsEngineOn = false; }
+        public void TurnOnEngine()
+        {
+            IsEngineOn = true;
+        }
+        public void TurnOffEngine()
+        {
+            IsEngineOn = false;
+        }
 
-        public List<Trip> GetTrips() { return _trips; }
+        public List<Trip> GetTrips()
+        {
+            return _trips;
+        }
 
         public List<Trip> GetTripsByDate(DateTime date)
         {
