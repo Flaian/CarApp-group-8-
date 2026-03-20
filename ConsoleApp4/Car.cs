@@ -1,82 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using Microsoft.VisualBasic.FileIO;
-
-namespace ConsoleApp4
+﻿namespace CarAppGroup8
 {
-    public class Car
-    {
 
-       
-        
-            // general car propotys 
-           public string Brand { get; private set; }
-           public string Model { get; private set; }     
-           public int Year { get; private set; }
+    public abstract class Car
+    {
+        // Properties
+        public string Brand { get; private set; }
+        public string Model { get; private set; }
+        public int Year { get; private set; }
         public string LicensePlate { get; private set; }
-           public FuelType fuelType { get; private set; }
-           public double KmPerLiter { get; private set; }
-           public double odometer { get; private set; }
+        public double Odometer { get; protected set; }
+        public bool IsEngineOn { get; private set; }
 
         private List<Trip> _trips = new List<Trip>();
-		private Engine _engine;
 
 
-
-		public Car(string brand,string model,int  year, string licensePlate,FuelType fuelType, double KmPerLiter, double Odometer) 
+        // Constructor
+        public Car(string brand, string model, int year, string licensePlate)
         {
-			Brand = brand;
-
-			Model = model;
-
-			Year = year;
-
-			LicensePlate = licensePlate;
-
-			FuelType = fuelType;
-
-			KmPerLiter = kmPerLiter;
-
-			_engine = new Engine();
-		}
+            Brand = brand;
+            Model = model;
+            Year = year;
+            LicensePlate = licensePlate;
+        }
 
 
-        public void TurnOnEngine() => _engine.Start();
-		public void TurnOffEngine() => _engine.Stop();
+        public abstract void UpdateEnergyLevel(double km);
 
-
-        public void Drive(Trip newTrip)
-        { if (newTrip.Car == this)
+        public void Drive(Trip trip)
+        {
+            if (IsEngineOn)
             {
-                odometer += newTrip.Distance;
-                _trips.Add(newTrip);
+                Odometer += trip.Distance;
+                UpdateEnergyLevel(trip.Distance);
+                _trips.Add(trip);
             }
             else
             {
-                Console.WriteLine("Fej: Denne tur tilhører ikke denne bil.");
+                Console.WriteLine("Fejl: Motoren er ikke tændt.");
             }
+        }
 
+        public void TurnOnEngine() { IsEngineOn = true; }
+        public void TurnOffEngine() { IsEngineOn = false; }
 
+        public List<Trip> GetTrips() { return _trips; }
 
+        public List<Trip> GetTripsByDate(DateTime date)
+        {
+            List<Trip> result = new List<Trip>();
+            foreach (Trip trip in _trips)
+                if (trip.TripDate.Date == date.Date)
+                    result.Add(trip);
+            return result;
+        }
 
-			}
-
-
-
-
-
-
-
-
-
-        }            
-
-
-
-
-
-	}
+        public List<Trip> GetTripsInTimeInterval(DateTime start, DateTime end)
+        {
+            List<Trip> result = new List<Trip>();
+            foreach (Trip trip in _trips)
+                if (trip.StartTime >= start && trip.StartTime <= end)
+                    result.Add(trip);
+            return result;
+        }
+    }
 }
+
