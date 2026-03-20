@@ -36,14 +36,23 @@
 
             Console.WriteLine("=== Polymorphism TEST ===");
 
-            foreach (var car in cars)
+            foreach (Car car in cars)
             {
                 car.TurnOnEngine();
                 Trip trip = new Trip(car, 60, DateTime.Now, DateTime.Now.AddHours(1));
                 car.Drive(trip);
 
                 Console.WriteLine($"{car.Brand} {car.Model}");
-                Console.WriteLine($"Odometer: {car.Odometer} km\n");
+                Console.WriteLine($"Odometer: {car.Odometer} km");
+
+                if (car is FuelCar fuel)
+                {
+                    Console.WriteLine($"Fuel Level: {fuel.FuelLevel:F1}\n");
+                }
+                if (car is ElectricCar electric)
+                {
+                    Console.WriteLine($"Battery Level: {electric.BatteryLevel:F1}\n");
+                }
             }
 
             Console.ReadKey();
