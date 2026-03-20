@@ -26,6 +26,27 @@
             Console.WriteLine($"Battery level: {electricCar.BatteryLevel:F1} kWh");
 
             Console.WriteLine();
+
+
+            // 2. Test Polymorphism
+            List<Car> cars = new List<Car>();
+
+            cars.Add(new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0));
+            cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5));
+
+            Console.WriteLine("=== Polymorphism TEST ===");
+
+            foreach (var car in cars)
+            {
+                car.TurnOnEngine();
+                Trip trip = new Trip(car, 60, DateTime.Now, DateTime.Now.AddHours(1));
+                car.Drive(trip);
+
+                Console.WriteLine($"{car.Brand} {car.Model}");
+                Console.WriteLine($"Odometer: {car.Odometer} km\n");
+            }
+
+            Console.ReadKey();
         }
     }
 }
