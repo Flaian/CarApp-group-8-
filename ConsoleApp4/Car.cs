@@ -1,17 +1,18 @@
 ﻿public class Car
 {
-    private string _brand;
-    private string _model;
-    private int _year;
-    private char _gear;
+    private readonly string _brand;
+    private readonly string _model;
+    private readonly int _year;
+    private readonly char _gear;
     private double _odometer;
     private FuelType _fuelType;
     private bool _isEngineOn;
-    private double _kmPrLiter;
-    private List<Trip> _trips = new List<Trip>();
+    private readonly double _kmPrLiter;
+    private readonly string _licensePlate;
+    private List<Trip> _trips = [];
 
 	// Constructor
-	public Car(string brand, string model, int year, char gear, double odometer, FuelType fuelType, bool isEngineOn, double kmPrLiter)
+	public Car(string brand, string model, int year, char gear, double odometer, FuelType fuelType, bool isEngineOn, double kmPrLiter, string licensePlate)
 	{
 		_brand = brand;
 		_model = model;
@@ -21,6 +22,7 @@
 		_fuelType = fuelType;
 		_isEngineOn = isEngineOn;
 		_kmPrLiter = kmPrLiter;
+        _licensePlate = licensePlate;
 	}
 
     // READ-ONLY properties
@@ -61,6 +63,14 @@
         get
         {
             return _kmPrLiter;
+        }
+    }
+
+    public string LicensePlate
+    {
+        get
+        {
+            return _licensePlate;
         }
     }
 
