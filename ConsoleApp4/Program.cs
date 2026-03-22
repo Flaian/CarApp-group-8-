@@ -7,9 +7,14 @@
             Car car1 = new Car("Hyundai", "i10", 2012, 'M', 130031, "Gasoline", false, 18.9);
             Car car2 = new Car("Rover", "25", 2010, 'A', 72700, "Diesel", false, 17.6);
 
-            double fuelPrice = 0;
-            double distance = 50;
-            double tripPrice = 0;
+            double fuelPriceCar1 = 14.33;
+            double distanceCar1 = 50;
+            double tripPriceCar1 = 0;
+
+            double fuelPriceCar2 = 15.77;
+            double distanceCar2 = 100;
+            double tripPriceCar2 = 0;
+
             bool palindrome = false;
 
             while (true)
@@ -32,12 +37,15 @@
 
                 else if (userInput == '2')
                 {
-                    car1.Drive(distance);
+                    car1.Drive(distanceCar1);
+                    car2.Drive(distanceCar2);
                 }
 
                 else if (userInput == '3')
                 {
-                    // tripPrice = CalculateTripPrice(distance, fuelPrice, fuelType, kmPrLiter);
+                    tripPriceCar1 = car1.CalculateTripPrice(distanceCar1, fuelPriceCar1);
+                    tripPriceCar2 = car2.CalculateTripPrice(distanceCar2, fuelPriceCar2);
+
                 }
 
                 else if (userInput == '4')
@@ -47,7 +55,8 @@
 
                 else if (userInput == '5')
                 {
-                    // PrintCarDetails(fuelType, kmPrLiter, odometer, distance, tripPrice);
+                    Console.WriteLine(car1.GetCarDetails());
+                    Console.WriteLine(car2.GetCarDetails());
                 }
 
                 else if (userInput == '6')
