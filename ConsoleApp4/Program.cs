@@ -17,7 +17,7 @@
                 Console.WriteLine("(1) - Toggle the engine");
                 Console.WriteLine("(2) - Go for a trip");
                 Console.WriteLine("(3) - Calculate fuel expenses");
-                Console.WriteLine("(4) - Is the odometer a palindrome?");
+                Console.WriteLine("(4) - Change details of your car");
                 Console.WriteLine("(5) - Show the details of the car");
                 Console.WriteLine("(6) - Exit program");
                 Console.WriteLine("\nPlease type the number and then press [Enter]: ");
@@ -26,8 +26,8 @@
 
                 if (userInput == '1')
                 {
-                    // ReadCarDetails(ref brand, ref model, ref year, ref gear, ref fuelType, ref fuelPrice, ref kmPrLiter, ref odometer);
-                    Console.WriteLine("Coming soon...");
+                    car1.ToggleEngine();
+                    Console.WriteLine(car1.IsEngineOn ? "The engine has been turned on" : "The engine has been turned off");
                 }
 
                 else if (userInput == '2')
@@ -43,13 +43,39 @@
 
                 else if (userInput == '4')
                 {
-                    // IsPalindrome(odometer, ref palindrome);
+                    while (true)
+                    {
+                        Console.Write("Write down the new number for the odometer: ");
+
+                        if (double.TryParse(Console.ReadLine(), out double odometerInput))
+                        {
+                            if (odometerInput >= 0)
+                            {
+                                car1.Odometer = odometerInput;
+                                break;
+                            }
+
+                            else if (odometerInput < car1.Odometer)
+                            {
+                                Console.WriteLine("Your input is lower than the car's registered odometer value and will therefore not change");
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("Your input cannot be a negative number");
+                            }
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("That is not a useful number, please try again");
+                        }
+                    }
                 }
 
                 else if (userInput == '5')
                 {
                     Console.WriteLine(car1.GetCarDetails());
-                    Console.WriteLine(car2.GetCarDetails());
                 }
 
                 else if (userInput == '6')
