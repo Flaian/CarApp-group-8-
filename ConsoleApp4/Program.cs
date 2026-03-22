@@ -9,6 +9,7 @@
             bool palindrome = false;
 
             Car car = new Car("Hyundai", "i10", 2012, 'M', 130031, FuelType.Gasoline, false, 18.9, "CS36036");
+            car.ToggleEngine();
 
             List<Trip> trips = new List<Trip>()
             {
@@ -17,6 +18,10 @@
                 new Trip(car, 100, DateTime.Now, DateTime.Now.AddHours(2))
             };
 
+            foreach (Trip trip in trips)
+            {
+                car.Drive(trip);
+            }
         }
 
         static void ReadCarDetails(ref string brand, ref string model, ref int year, ref char gear, ref string fuelType, ref double fuelPrice, ref double kmPrLiter, ref double odometer)

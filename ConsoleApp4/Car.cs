@@ -127,8 +127,11 @@
     {
         if (_isEngineOn)
         {
-            _odometer += newTrip.Distance;
-            _trips.Add(newTrip);
+            if (newTrip.Car == this)
+            {
+                _odometer += newTrip.Distance;
+                _trips.Add(newTrip);
+            }
         }
     }
 
