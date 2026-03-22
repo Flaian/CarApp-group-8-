@@ -168,9 +168,26 @@
     public List <Trip> GetTripsByDate(DateTime date)
     {
         List<Trip> trips = [];
+
         foreach (Trip trip in _trips)
         {
             if (date.Date == trip.TripDate.Date)
+            {
+                trips.Add(trip);
+            }
+        }
+
+        return trips;
+    }
+
+    // Method - GetTripsInTimeInterval
+    public List <Trip> GetTripsInTimeInterval(DateTime start, DateTime end)
+    {
+        List<Trip> trips = [];
+
+        foreach (Trip trip in _trips)
+        {
+            if (trip.StartTime >= start && trip.StartTime <= end)
             {
                 trips.Add(trip);
             }

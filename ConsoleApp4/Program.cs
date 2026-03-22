@@ -13,9 +13,9 @@
 
             List<Trip> trips = new List<Trip>()
             {
-                new Trip(car, 50, DateTime.Now, DateTime.Now.AddHours(1)),
-                new Trip(car, 30, DateTime.Now, DateTime.Now.AddMinutes(30)),
-                new Trip(car, 100, DateTime.Now, DateTime.Now.AddHours(2))
+                new Trip(car, 50, DateTime.Today, DateTime.Today.AddHours(1)),
+                new Trip(car, 30, DateTime.Today, DateTime.Today.AddMinutes(30)),
+                new Trip(car, 100, DateTime.Today, DateTime.Today.AddHours(2))
             };
 
             foreach (Trip trip in trips)
@@ -28,7 +28,12 @@
                 Console.Write(trip.GetTripDetails());
             }
 
-            List<Trip> tripsByDate = car.GetTripsByDate(DateTime.Today);
+            List <Trip> tripsByDate = car.GetTripsByDate(DateTime.Today);
+
+            DateTime start = DateTime.Today;
+            DateTime end = DateTime.Today.AddHours(1).AddMinutes(30);
+
+            List<Trip> tripsInTimeInterval = car.GetTripsInTimeInterval(start, end);
         }
     }
 }
