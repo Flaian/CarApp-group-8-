@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System.Reflection;
-
-namespace CarApp
+﻿namespace CarApp
 {
     class Program
     {
