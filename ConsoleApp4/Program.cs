@@ -7,23 +7,18 @@
             Car car1 = new Car("Hyundai", "i10", 2012, 'M', 130031, "Gasoline", false, 18.9);
             Car car2 = new Car("Rover", "25", 2010, 'A', 72700, "Diesel", false, 17.6);
 
-            double fuelPriceCar1 = 14.33;
-            double distanceCar1 = 50;
-            double tripPriceCar1 = 0;
-
-            double fuelPriceCar2 = 15.77;
-            double distanceCar2 = 100;
-            double tripPriceCar2 = 0;
-
+            double fuelPrice = 14.33;
+            double distance = 50;
+            double tripPrice = 0;
             bool palindrome = false;
 
             while (true)
             {
-                Console.WriteLine("(1) - ReadCarDetails()");
-                Console.WriteLine("(2) - Drive()");
-                Console.WriteLine("(3) - CalculateTripPrice()");
-                Console.WriteLine("(4) - IsPalindrome()");
-                Console.WriteLine("(5) - PrintCarDetails()");
+                Console.WriteLine("(1) - Toggle the engine");
+                Console.WriteLine("(2) - Go for a trip");
+                Console.WriteLine("(3) - Calculate fuel expenses");
+                Console.WriteLine("(4) - Is the odometer a palindrome?");
+                Console.WriteLine("(5) - Show the details of the car");
                 Console.WriteLine("(6) - Exit program");
                 Console.WriteLine("\nPlease type the number and then press [Enter]: ");
 
@@ -37,14 +32,12 @@
 
                 else if (userInput == '2')
                 {
-                    car1.Drive(distanceCar1);
-                    car2.Drive(distanceCar2);
+                    car1.Drive(distance);
                 }
 
                 else if (userInput == '3')
                 {
-                    tripPriceCar1 = car1.CalculateTripPrice(distanceCar1, fuelPriceCar1);
-                    tripPriceCar2 = car2.CalculateTripPrice(distanceCar2, fuelPriceCar2);
+                    tripPrice = car1.CalculateTripPrice(distance, fuelPrice);
 
                 }
 

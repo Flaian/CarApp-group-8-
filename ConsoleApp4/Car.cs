@@ -100,6 +100,12 @@
         }
     }
 
+    // Method - ToggleEngine()
+    public void ToggleEngine()
+    {
+        _isEngineOn = !_isEngineOn;
+    }
+
     // Method - Drive()
     public void Drive(double distance)
     {
