@@ -9,8 +9,8 @@
             FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0);
             ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5);
 
-            fuelCar.TurnOnEngine();
-            electricCar.TurnOnEngine();
+            fuelCar.ToggleEngine();
+            electricCar.ToggleEngine();
 
             Trip trip1 = new Trip(fuelCar, 120, DateTime.Now, DateTime.Now.AddHours(2));
             Trip trip2 = new Trip(electricCar, 60, DateTime.Now, DateTime.Now.AddHours(1));
@@ -38,7 +38,7 @@
 
             foreach (Car car in cars)
             {
-                car.TurnOnEngine();
+                car.ToggleEngine();
                 Trip trip = new Trip(car, 60, DateTime.Now, DateTime.Now.AddHours(1));
                 car.Drive(trip);
 

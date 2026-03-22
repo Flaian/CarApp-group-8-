@@ -41,14 +41,12 @@
             }
         }
 
-        public void TurnOnEngine()
+        public void ToggleEngine()
         {
-            IsEngineOn = true;
+            IsEngineOn = !IsEngineOn;
         }
-        public void TurnOffEngine()
-        {
-            IsEngineOn = false;
-        }
+        e
+
 
         public List<Trip> GetTrips()
         {
