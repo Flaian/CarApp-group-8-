@@ -4,14 +4,10 @@
     {
         static void Main(string[] args)
         {
-            string brand = "";
-            string model = "";
-            int year = 0;
-            char gear = '\0';
-            string fuelType = "";
+            Car car1 = new Car("Hyundai", "i10", 2012, 'M', 130031, "Gasoline", false, 18.9);
+            Car car2 = new Car("Rover", "25", 2010, 'A', 72700, "Diesel", false, 17.6);
+
             double fuelPrice = 0;
-            double kmPrLiter = 0;
-            double odometer = 0;
             double distance = 0;
             double tripPrice = 0;
             bool palindrome = false;
