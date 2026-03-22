@@ -95,6 +95,6 @@
     // Method - GetTripDetails()
     public string GetTripDetails()
     {
-        return $"Car used: {_car.Brand} {_car.Model}\nTrip distance: {Distance}\nDate of trip: {TripDate}";
+        return $"Car used: {_car.Brand} {_car.Model}\nTrip distance: {Distance}\nDate of trip: {TripDate}\nDuration of trip: {CalculateDuration()}\n\n";
     }
 }

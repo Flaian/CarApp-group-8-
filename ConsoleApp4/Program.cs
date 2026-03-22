@@ -22,35 +22,10 @@
             {
                 car.Drive(trip);
             }
-        }
 
-        static void ReadCarDetails(ref string brand, ref string model, ref int year, ref char gear, ref string fuelType, ref double fuelPrice, ref double kmPrLiter, ref double odometer)
-        {
-            brand = "Hyundai";
-            model = "i10";
-            year = 2012;
-            gear = 'M';
-            fuelType = "Gasoline";
-            fuelPrice = 13.49;
-            kmPrLiter = 18.9;
-            odometer = 130031;
-        }
-
-        static void IsPalindrome(double odometer, ref bool palindrome)
-        {
-            string palindromeString = odometer.ToString();
-            char[] palindromeReverse = palindromeString.ToCharArray();
-            Array.Reverse(palindromeReverse);
-            string palindromeReversed = new string(palindromeReverse);
-
-            if (palindromeString == palindromeReversed)
+            foreach (Trip trip in car.GetTrips())
             {
-                Console.WriteLine("Your odometer is a palindrome");
-            }
-
-            else
-            {
-                Console.WriteLine("Your odometer is not a palindrome");
+                Console.Write(trip.GetTripDetails());
             }
         }
     }
