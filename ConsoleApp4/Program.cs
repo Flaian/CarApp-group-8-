@@ -73,17 +73,6 @@
             odometer = 130031;
         }
 
-        static void Drive(ref double distance, ref double odometer)
-        {
-            distance = 83.29;
-            bool isEngineOn = true;
-
-            if (isEngineOn)
-            {
-                odometer += distance;
-            }
-        }
-
         static double CalculateTripPrice(double distance, double fuelPrice, string fuelType, double kmPrLiter)
         {
             if (kmPrLiter == 0)

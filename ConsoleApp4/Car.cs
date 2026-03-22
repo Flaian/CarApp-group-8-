@@ -99,4 +99,13 @@
             }
         }
     }
+
+    // Method - Drive()
+    public void Drive(double distance)
+    {
+        if (_isEngineOn)
+        {
+            _odometer += distance;
+        }
+    }
 }
