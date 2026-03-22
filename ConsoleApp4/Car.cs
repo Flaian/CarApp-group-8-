@@ -5,12 +5,12 @@
     private int _year;
     private char _gear;
     private double _odometer;
-    private string _fuelType;
+    private FuelType _fuelType;
     private bool _isEngineOn;
     private double _kmPrLiter;
 
 	// Constructor
-	public Car(string brand, string model, int year, char gear, double odometer, string fuelType, bool isEngineOn, double kmPrLiter)
+	public Car(string brand, string model, int year, char gear, double odometer, FuelType fuelType, bool isEngineOn, double kmPrLiter)
 	{
 		_brand = brand;
 		_model = model;
@@ -55,14 +55,6 @@
         }
     }
 
-    public string FuelType
-    {
-        get
-        {
-            return _fuelType;
-        }
-    }
-
     public double KmPrLiter
     {
         get
@@ -72,6 +64,19 @@
     }
 
     // Read+Write property
+    public FuelType FuelType
+    {
+        get
+        {
+            return _fuelType;
+        }
+
+        private set
+        {
+            _fuelType = value;
+        }
+    }
+
     public bool IsEngineOn
     {
         get
