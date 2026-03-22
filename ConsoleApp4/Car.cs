@@ -163,4 +163,19 @@
     {
         return _trips;
     }
+
+    // Method - GetTripsByDate()
+    public List <Trip> GetTripsByDate(DateTime date)
+    {
+        List<Trip> trips = [];
+        foreach (Trip trip in _trips)
+        {
+            if (date.Date == trip.TripDate.Date)
+            {
+                trips.Add(trip);
+            }
+        }
+
+        return trips;
+    }
 }

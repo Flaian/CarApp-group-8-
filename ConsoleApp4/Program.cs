@@ -27,6 +27,8 @@
             {
                 Console.Write(trip.GetTripDetails());
             }
+
+            List<Trip> tripsByDate = car.GetTripsByDate(DateTime.Today);
         }
     }
 }
