@@ -73,23 +73,6 @@
             odometer = 130031;
         }
 
-        static double CalculateTripPrice(double distance, double fuelPrice, string fuelType, double kmPrLiter)
-        {
-            if (kmPrLiter == 0)
-            {
-                Console.WriteLine("Cannot execute method as kmPrLiter == 0");
-                return 0;
-            }
-
-            if (fuelType != "Gasoline" && fuelType != "Diesel")
-            {
-                Console.WriteLine("fuelType is neither gasoline or diesel, something is wrong");
-                return 0;
-            }
-
-            return Math.Round((distance / kmPrLiter) * fuelPrice, 2);
-        }
-
         static void IsPalindrome(double odometer, ref bool palindrome)
         {
             string palindromeString = odometer.ToString();
