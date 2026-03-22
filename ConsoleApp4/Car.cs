@@ -124,4 +124,11 @@
 
         return Math.Round((distance / _kmPrLiter) * fuelPrice, 2);
     }
+
+    // Method - GetCarDetails()
+    public string GetCarDetails()
+    {
+        return $"Brand: {_brand}\nModel: {_model}\nYear: {_year}\nGear: {_gear}\nOdometer: {_odometer}\n" +
+            $"Fuel type: {_fuelType}\nState of engine: {(_isEngineOn ? "On" : "Off")}\nKm/L: {_kmPrLiter}";
+    }
 }

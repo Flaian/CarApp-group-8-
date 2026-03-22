@@ -90,15 +90,5 @@
                 Console.WriteLine("Your odometer is not a palindrome");
             }
         }
-
-        static void PrintCarDetails(string fuelType, double kmPrLiter, double odometer, double distance, double tripPrice)
-        {
-            Console.WriteLine($"Fuel type:              {fuelType}");
-            Console.WriteLine($"Km/l:                   {kmPrLiter}");
-            Console.WriteLine($"Odometer pre-trip:      {odometer - distance}");
-            Console.WriteLine($"Odometer post-trip:     {odometer}");
-            Console.WriteLine($"Fuel price for trip:    {tripPrice}");
-            Console.WriteLine(string.Format("Fuel expenses for {0} km is {1} DKK", distance, tripPrice));
-        }
     }
 }
