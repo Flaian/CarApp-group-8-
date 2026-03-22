@@ -8,7 +8,7 @@
             Car car2 = new Car("Rover", "25", 2010, 'A', 72700, "Diesel", false, 17.6);
 
             double fuelPrice = 0;
-            double distance = 0;
+            double distance = 50;
             double tripPrice = 0;
             bool palindrome = false;
 
@@ -26,27 +26,28 @@
 
                 if (userInput == '1')
                 {
-                    ReadCarDetails(ref brand, ref model, ref year, ref gear, ref fuelType, ref fuelPrice, ref kmPrLiter, ref odometer);
+                    // ReadCarDetails(ref brand, ref model, ref year, ref gear, ref fuelType, ref fuelPrice, ref kmPrLiter, ref odometer);
+                    Console.WriteLine("Coming soon...");
                 }
 
                 else if (userInput == '2')
                 {
-                    Drive(ref distance, ref odometer);
+                    car1.Drive(distance);
                 }
 
                 else if (userInput == '3')
                 {
-                    tripPrice = CalculateTripPrice(distance, fuelPrice, fuelType, kmPrLiter);
+                    // tripPrice = CalculateTripPrice(distance, fuelPrice, fuelType, kmPrLiter);
                 }
 
                 else if (userInput == '4')
                 {
-                    IsPalindrome(odometer, ref palindrome);
+                    // IsPalindrome(odometer, ref palindrome);
                 }
 
                 else if (userInput == '5')
                 {
-                    PrintCarDetails(fuelType, kmPrLiter, odometer, distance, tripPrice);
+                    // PrintCarDetails(fuelType, kmPrLiter, odometer, distance, tripPrice);
                 }
 
                 else if (userInput == '6')
