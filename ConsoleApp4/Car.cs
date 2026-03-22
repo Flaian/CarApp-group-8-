@@ -45,8 +45,6 @@
         {
             IsEngineOn = !IsEngineOn;
         }
-        e
-
 
         public List<Trip> GetTrips()
         {
