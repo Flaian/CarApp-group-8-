@@ -72,4 +72,29 @@
             _tripDate = value;
         }
     }
+
+
+    // Method - CalculateDuration()
+    public TimeSpan CalculateDuration()
+    {
+        return EndTime - StartTime;
+    }
+
+    // Method CalculateFuelUsed()
+    public double CalculateFuelUsed()
+    {
+        return Distance / _car.KmPrLiter;
+    }
+
+    // Method - CalculateTripPrice()
+    public double CalculateTripPrice(double literPrice)
+    {
+        return CalculateFuelUsed() * literPrice;
+    }
+
+    // Method - GetTripDetails()
+    public string GetTripDetails()
+    {
+        return $"Car used: {_car.Brand} {_car.Model}\nTrip distance: {Distance}\nDate of trip: {TripDate}";
+    }
 }

@@ -8,6 +8,7 @@
     private FuelType _fuelType;
     private bool _isEngineOn;
     private double _kmPrLiter;
+    private List<Trip> _trips = new List<Trip>();
 
 	// Constructor
 	public Car(string brand, string model, int year, char gear, double odometer, FuelType fuelType, bool isEngineOn, double kmPrLiter)
@@ -112,11 +113,12 @@
     }
 
     // Method - Drive()
-    public void Drive(double distance)
+    public void Drive(Trip newTrip)
     {
         if (_isEngineOn)
         {
-            _odometer += distance;
+            _odometer += newTrip.Distance;
+            _trips.Add(newTrip);
         }
     }
 
@@ -141,5 +143,11 @@
     {
         return $"Brand: {Brand}\nModel: {Model}\nYear: {Year}\nGear: {Gear}\nOdometer: {Odometer}\n" +
             $"Fuel type: {FuelType}\nState of engine: {(IsEngineOn ? "On" : "Off")}\nKm/L: {KmPrLiter}";
+    }
+
+    // Method - GetTrips()
+    public List<Trip> GetTrips()
+    {
+        return _trips;
     }
 }
