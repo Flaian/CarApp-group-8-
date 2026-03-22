@@ -128,7 +128,7 @@
             return 0;
         }
 
-        if (_fuelType != "Gasoline" && _fuelType != "Diesel")
+        if (_fuelType != FuelType.Gasoline && _fuelType != FuelType.Diesel)
         {
             return 0;
         }

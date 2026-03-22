@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-
-public class Trip
+﻿public class Trip
 {
     private Car _car;
     private double _distance;

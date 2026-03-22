@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Car car1 = new Car("Hyundai", "i10", 2012, 'M', 130031, "Gasoline", false, 18.9);
-            Car car2 = new Car("Rover", "25", 2010, 'A', 72700, "Diesel", false, 17.6);
+            Car car1 = new Car("Hyundai", "i10", 2012, 'M', 130031, FuelType.Gasoline, false, 18.9);
+            Car car2 = new Car("Rover", "25", 2010, 'A', 72700, FuelType.Diesel, false, 17.6);
 
             double fuelPrice = 14.33;
             double distance = 50;
