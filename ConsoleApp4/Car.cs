@@ -37,7 +37,7 @@
             }
             else
             {
-                Console.WriteLine("Fejl: Motoren er ikke tændt.");
+                Console.WriteLine("Error, engine is not on.");
             }
         }
 
