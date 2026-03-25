@@ -1,4 +1,4 @@
-﻿public class Car
+﻿public abstract class Car
 {
     private readonly string _brand;
     private readonly string _model;
@@ -122,16 +122,24 @@
         _isEngineOn = !_isEngineOn;
     }
 
+    // Abstract method - UpdateEnergyLevel(), subclass defines how energy updates
+    public abstract void UpdateEnergyLevel(double km);
+
     // Method - Drive()
     public void Drive(Trip newTrip)
     {
-        if (_isEngineOn)
+        if (IsEngineOn)
         {
             if (newTrip.Car == this)
             {
-                _odometer += newTrip.Distance;
+                Odometer += newTrip.Distance;
+                UpdateEnergyLevel(newTrip.Distance); // This is delegated to the subclass
                 _trips.Add(newTrip);
             }
+        }
+        else
+        {
+            Console.WriteLine("Despite your efforts, nothing happens... You notice that the engine is off");
         }
     }
 
