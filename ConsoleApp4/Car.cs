@@ -135,22 +135,6 @@
         }
     }
 
-    // Method - CalculateTripPrice()
-    public double CalculateTripPrice(double distance, double fuelPrice)
-    {
-        if (_kmPrLiter == 0)
-        {
-            return 0;
-        }
-
-        if (_fuelType != FuelType.Gasoline && _fuelType != FuelType.Diesel)
-        {
-            return 0;
-        }
-
-        return Math.Round((distance / _kmPrLiter) * fuelPrice, 2);
-    }
-
     // Method - GetCarDetails()
     public string GetCarDetails()
     {
