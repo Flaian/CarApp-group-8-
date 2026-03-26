@@ -3,25 +3,17 @@
     private readonly string _brand;
     private readonly string _model;
     private readonly int _year;
-    private readonly char _gear;
     private double _odometer;
-    private FuelType _fuelType;
     private bool _isEngineOn;
-    private readonly double _kmPrLiter;
     private readonly string _licensePlate;
     private List<Trip> _trips = [];
 
 	// Constructor
-	public Car(string brand, string model, int year, char gear, double odometer, FuelType fuelType, bool isEngineOn, double kmPrLiter, string licensePlate)
+	public Car(string brand, string model, int year, string licensePlate)
 	{
 		_brand = brand;
 		_model = model;
 		_year = year;
-		_gear = gear;
-		_odometer = odometer;
-		_fuelType = fuelType;
-		_isEngineOn = isEngineOn;
-		_kmPrLiter = kmPrLiter;
         _licensePlate = licensePlate;
 	}
 
@@ -50,22 +42,6 @@
         }
     }
 
-    public char Gear
-    {
-        get
-        {
-            return _gear;
-        }
-    }
-
-    public double KmPrLiter
-    {
-        get
-        {
-            return _kmPrLiter;
-        }
-    }
-
     public string LicensePlate
     {
         get
@@ -75,19 +51,6 @@
     }
 
     // Read+Write property
-    public FuelType FuelType
-    {
-        get
-        {
-            return _fuelType;
-        }
-
-        private set
-        {
-            _fuelType = value;
-        }
-    }
-
     public bool IsEngineOn
     {
         get
@@ -146,8 +109,8 @@
     // Method - GetCarDetails()
     public string GetCarDetails()
     {
-        return $"Brand: {Brand}\nModel: {Model}\nYear: {Year}\nGear: {Gear}\nOdometer: {Odometer}\n" +
-            $"Fuel type: {FuelType}\nState of engine: {(IsEngineOn ? "On" : "Off")}\nKm/L: {KmPrLiter}";
+        return $"Brand: {Brand}\nModel: {Model}\nYear: {Year}\nOdometer: {Odometer}\n" +
+            $"State of engine: {(IsEngineOn ? "On" : "Off")}";
     }
 
     // Method - GetTrips()

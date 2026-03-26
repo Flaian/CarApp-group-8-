@@ -8,32 +8,35 @@
             double tripPrice = 0;
             bool palindrome = false;
 
-            Car car = new Car("Hyundai", "i10", 2012, 'M', 130031, FuelType.Gasoline, false, 18.9, "CS36036");
-            car.ToggleEngine();
+            FuelCar fuelCar = new FuelCar("Hyundai", "i10", 2012, "EC36063", 50.0, 18.0);
+            fuelCar.ToggleEngine();
 
-            List<Trip> trips = new List<Trip>()
-            {
-                new Trip(car, 50, DateTime.Today, DateTime.Today.AddHours(1)),
-                new Trip(car, 30, DateTime.Today, DateTime.Today.AddMinutes(30)),
-                new Trip(car, 100, DateTime.Today, DateTime.Today.AddHours(2))
-            };
+            ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5);
+            electricCar.ToggleEngine();
 
-            foreach (Trip trip in trips)
-            {
-                car.Drive(trip);
-            }
+            Trip trip1 = new Trip(fuelCar, 80, DateTime.Now, DateTime.Now.AddHours(1));
+            Trip trip2 = new Trip(electricCar, 60, DateTime.Now, DateTime.Now.AddHours(1));
 
-            foreach (Trip trip in car.GetTrips())
+            fuelCar.Drive(trip1);
+            electricCar.Drive(trip2);
+
+            Console.WriteLine($"FuelCar odometer: {fuelCar.Odometer} km");
+            Console.WriteLine($"Fuel level: {fuelCar.FuelLevel:F1} L");
+
+            Console.WriteLine($"ElectricCar odometer: {electricCar.Odometer} km");
+            Console.WriteLine($"Battery level: {electricCar.BatteryLevel:F1} kWh");
+
+            foreach (Trip trip in fuelCar.GetTrips())
             {
                 Console.Write(trip.GetTripDetails());
             }
 
-            List <Trip> tripsByDate = car.GetTripsByDate(DateTime.Today);
+            List <Trip> tripsByDate = fuelCar.GetTripsByDate(DateTime.Today);
 
             DateTime start = DateTime.Today;
             DateTime end = DateTime.Today.AddHours(1).AddMinutes(30);
 
-            List<Trip> tripsInTimeInterval = car.GetTripsInTimeInterval(start, end);
+            List<Trip> tripsInTimeInterval = fuelCar.GetTripsInTimeInterval(start, end);
         }
     }
 }

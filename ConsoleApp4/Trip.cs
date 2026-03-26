@@ -80,18 +80,6 @@
         return EndTime - StartTime;
     }
 
-    // Method CalculateFuelUsed()
-    public double CalculateFuelUsed()
-    {
-        return Distance / _car.KmPrLiter;
-    }
-
-    // Method - CalculateTripPrice()
-    public double CalculateTripPrice(double literPrice)
-    {
-        return CalculateFuelUsed() * literPrice;
-    }
-
     // Method - GetTripDetails()
     public string GetTripDetails()
     {
