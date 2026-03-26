@@ -5,7 +5,8 @@ public class ElectricCar : Car, ISellable, IInsurable
 	public double BatteryCapacity { get; private set; }
 	public double BatteryLevel { get; private set; }
     public double KmPrKwh { get; private set; }
-	public double Price => CalculatePrice();
+	public double Price => 120000 - (Odometer * 0.4);
+	public string RegistrationNumber => LicensePlate;
 
     // Constructor
     public ElectricCar(string brand, string model, int year, string licensePlate, double batteryCapacity, double kmPrKwh)
@@ -32,17 +33,15 @@ public class ElectricCar : Car, ISellable, IInsurable
 		BatteryLevel = Math.Min(BatteryLevel + kwh, BatteryCapacity);
 	}
 
-    // Method - CalculatePrice()
-    public double CalculatePrice()
+    // Method - GetSalesSummary()
+    public string GetSalesSummary()
     {
-        // Just a simplistic example - Electric cars keep value better than fuel cars
-        return 150000 - (Odometer * 0.3);
+		return $"{Brand} {Model} ({Year}) - {Odometer} km - Electric car";
     }
 
     // Method - GetInsuranceRate()
     public double GetInsuranceRate()
     {
-        // Simplistic example - different risk profile
-        return 4000 + (Odometer * 0.015);
+		return 0.04; // 4%
     }
 }

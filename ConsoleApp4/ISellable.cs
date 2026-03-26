@@ -3,5 +3,5 @@
 public interface ISellable
 {
 	double Price { get; }
-	double CalculatePrice();
+	string GetSalesSummary();
 }

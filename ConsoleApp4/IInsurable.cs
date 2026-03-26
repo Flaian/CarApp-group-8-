@@ -2,6 +2,6 @@
 
 public interface IInsurable
 {
-    string LicensePlate { get; }
+    string RegistrationNumber { get; }
     double GetInsuranceRate();
 }
