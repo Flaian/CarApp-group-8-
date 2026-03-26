@@ -5,13 +5,14 @@ public class FuelCar : Car, ISellable, IInsurable
 	public double TankCapacity { get; private set; }
     public double FuelLevel { get; private set; }
     public double KmPrLiter { get; private set; }
-	public double Price => 100000 - (Odometer * 0.5);
+	public double Price { get; private set; }
 	public string RegistrationNumber => LicensePlate;
 
     // Constructor
-    public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPrLiter)
+    public FuelCar(string brand, string model, int year, string licensePlate, double price, double tankCapacity, double kmPrLiter)
 		: base(brand, model, year, licensePlate)
 	{
+		Price = price;
         TankCapacity = tankCapacity;
         FuelLevel = tankCapacity;
         KmPrLiter = kmPrLiter;
