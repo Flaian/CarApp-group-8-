@@ -2,36 +2,17 @@
 
 public class FuelCar : Car
 {
-	public double tankCapacity;
-	public double fuelLevel;
-	public double kmPrLiter;
+	public double TankCapacity { get; private set; }
+    public double FuelLevel { get; private set; }
+    public double KmPrLiter { get; private set; }
 
-	// Constructor
-	public FuelCar(string brand, string model, int year, string licensePlate, double tankcapacity, double fuellevel, double kmprliter)
+    // Constructor
+    public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPrLiter)
 		: base(brand, model, year, licensePlate)
 	{
-        tankCapacity = tankcapacity;
-        fuelLevel = fuellevel;
-        kmPrLiter = kmprliter;
-	}
-
-	// Simple properties
-	public double TankCapacity
-	{
-		get;
-		private set;
-	}
-
-	public double FuelLevel
-	{
-		get;
-		private set;
-	}
-
-	public double KmPrLiter
-	{
-		get;
-		private set;
+        TankCapacity = tankCapacity;
+        FuelLevel = tankCapacity;
+        KmPrLiter = kmPrLiter;
 	}
 
 	// Override of UpdateEnergyLevel()
