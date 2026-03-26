@@ -13,6 +13,11 @@
             cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 400000, 75.0, 6.5));
             cars.Add(new FuelCar("Hyundai", "i10", 2022, "CU26620", 38000, 35.0, 24.0));
 
+            House house = new House("Beach road 42, 2900 Hellerup", 1965, 4200000, "1234-AB");
+
+            forSale.Add(house);
+            insured.Add(house);
+
             // Driving a trip and adding cars to ISellable list
             foreach (Car car in cars)
             {
