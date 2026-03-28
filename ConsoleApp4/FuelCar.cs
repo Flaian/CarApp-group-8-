@@ -6,8 +6,8 @@
         public double FuelLevel { get; private set; }
         public double KmPerLiter { get; private set; }
 
-        public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPerLiter)
-            : base(brand, model, year, licensePlate)
+        public FuelCar(string brand, string model, int year, string licensePlate, double odometer, double price, double tankCapacity, double kmPerLiter)
+            : base(brand, model, year, licensePlate, odometer, price)
         {
             TankCapacity = tankCapacity;
             KmPerLiter = kmPerLiter;
@@ -45,7 +45,6 @@
 
 
         // ISellable implementation
-        public double Price { get; }
 
         public string GetSalesSummary()
         {

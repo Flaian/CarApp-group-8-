@@ -6,8 +6,10 @@
         {
 
             // 1. Test individual car types
-            FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0);
-            ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5);
+            FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 56000, 30000, 50.0, 19.0);
+            ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 25000, 40000, 75.0, 6.5);
+
+            List<ISellable> sellableCars = new List<ISellable> { fuelCar, electricCar };
 
             fuelCar.ToggleEngine();
             electricCar.ToggleEngine();
@@ -18,21 +20,22 @@
             fuelCar.Drive(trip1);
             electricCar.Drive(trip2);
 
-            Console.WriteLine("=== Individual test ===");
-            Console.WriteLine($"FuelCar odometer: {fuelCar.Odometer} km");
-            Console.WriteLine($"Fuel level: {fuelCar.FuelLevel:F1} L");
-            Console.WriteLine();
-            Console.WriteLine($"ElectricCar odometer: {electricCar.Odometer} km");
-            Console.WriteLine($"Battery level: {electricCar.BatteryLevel:F1} kWh");
 
-            Console.WriteLine();
+            Console.WriteLine("=== Interface Test ===");
+            foreach (ISellable car in sellableCars)
+            {
+                Console.WriteLine(car.GetSalesSummary());
+                Console.WriteLine();
+            }
+
+
 
 
             // 2. Test Polymorphism
             List<Car> cars = new List<Car>();
 
-            cars.Add(new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0));
-            cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5));
+            cars.Add(new FuelCar("Mazda", "3", 2019, "DW60547", 56000, 30000, 50.0, 19.0));
+            cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 25000, 40000, 75.0, 6.5));
 
             Console.WriteLine("=== Polymorphism TEST ===");
 

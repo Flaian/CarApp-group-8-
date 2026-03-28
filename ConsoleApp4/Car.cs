@@ -10,17 +10,20 @@
         public string LicensePlate { get; private set; }
         public double Odometer { get; protected set; }
         public bool IsEngineOn { get; private set; }
+        public double Price { get; private set; }
 
         private List<Trip> _trips = new List<Trip>();
 
 
         // Constructor
-        public Car(string brand, string model, int year, string licensePlate)
+        public Car(string brand, string model, int year, string licensePlate, double price, double odometer)
         {
             Brand = brand;
             Model = model;
             Year = year;
             LicensePlate = licensePlate;
+            Price = price;
+            Odometer = odometer;
         }
 
 
