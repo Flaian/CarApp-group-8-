@@ -11,6 +11,8 @@
 
             List<ISellable> sellableCars = new List<ISellable> { fuelCar, electricCar };
 
+            List<IInsurable> insurableCars = new List<IInsurable> { fuelCar, electricCar };
+
             fuelCar.ToggleEngine();
             electricCar.ToggleEngine();
 
@@ -21,7 +23,8 @@
             electricCar.Drive(trip2);
 
 
-            Console.WriteLine("=== Interface Test ===");
+            Console.WriteLine("=== Interface Test - Sellable ===");
+
             foreach (ISellable car in sellableCars)
             {
                 Console.WriteLine(car.GetSalesSummary());
@@ -41,6 +44,14 @@
             Console.WriteLine();
 
 
+            Console.WriteLine("=== Interface Test - Insurable ===");
+
+            foreach (IInsurable i in insurableCars)
+            {
+                Console.WriteLine($"{i.RegistrationNumber}: ${i.GetInsuranceRate():F1}");
+            }
+
+            Console.WriteLine();
 
             // 2. Test Polymorphism
             List<Car> cars = new List<Car>();
