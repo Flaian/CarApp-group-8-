@@ -34,12 +34,14 @@
 
         public double GetInsuranceRate()
         {
-            // Simple insurance rate calculation based on car's age and fuel efficiency
             int age = DateTime.Now.Year - Year;
-            double baseRate = 500; // Base rate in dollars
-            double ageFactor = age * 20; // Increase rate by $20 for each year of age
-            double efficiencyFactor = (KmPerLiter > 15) ? -50 : 50; // Discount for efficient cars, surcharge for inefficient ones
-            return baseRate + ageFactor + efficiencyFactor;
+
+            double rate = 0.05; // 5%
+
+            rate += age * 0.002; // +0.2% per year
+            rate += (KmPerLiter > 15) ? -0.01 : 0.01; // -1% or +1%
+
+            return rate * 100;
 
         }
 
@@ -48,7 +50,7 @@
 
         public string GetSalesSummary()
         {
-            return $"Fuel Car: {Brand} {Model} | {Year},\n" +
+            return $"Fuel Car: {Brand} {Model} | {Year}\n" +
                    $"License Plate: {LicensePlate}\n" +
                    $"Milage: {Odometer} KM\n" +
                    $"Price: ${Price}\n" +

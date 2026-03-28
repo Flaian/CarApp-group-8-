@@ -8,10 +8,11 @@
             // Test Interfaces
             FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 56000, 30000, 50.0, 19.0);
             ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 25000, 40000, 75.0, 6.5);
+            House house1 = new House("123 Main St", 1990, 350000, "HS12345");
 
-            List<ISellable> sellableCars = new List<ISellable> { fuelCar, electricCar };
+            List<ISellable> sellableCars = new List<ISellable> { fuelCar, electricCar, house1 };
 
-            List<IInsurable> insurableCars = new List<IInsurable> { fuelCar, electricCar };
+            List<IInsurable> insurableCars = new List<IInsurable> { fuelCar, electricCar, house1 };
 
             fuelCar.ToggleEngine();
             electricCar.ToggleEngine();
@@ -49,7 +50,7 @@
 
             foreach (IInsurable i in insurableCars)
             {
-                Console.WriteLine($"{i.RegistrationNumber}: ${i.GetInsuranceRate():F1}");
+                Console.WriteLine($"{i.RegistrationNumber}: {i.GetInsuranceRate():F1}%");
             }
 
             Console.WriteLine();
