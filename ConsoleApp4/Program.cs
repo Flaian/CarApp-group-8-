@@ -28,6 +28,17 @@
                 Console.WriteLine();
             }
 
+            double totalValue = 0;
+
+            foreach (ISellable s in sellableCars)
+            {
+                if (s is Car car)
+                {
+                    totalValue += car.Price;
+                }
+            }
+            Console.WriteLine($"Total Value of all cars: ${totalValue:N0}");
+            Console.WriteLine();
 
 
 
