@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            // 1. Test individual car types
+            // Test Interfaces
             FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 56000, 30000, 50.0, 19.0);
             ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 25000, 40000, 75.0, 6.5);
 
@@ -22,7 +22,7 @@
             fuelCar.Drive(trip1);
             electricCar.Drive(trip2);
 
-
+            // Test ISellable
             Console.WriteLine("=== Interface Test - Sellable ===");
 
             foreach (ISellable car in sellableCars)
@@ -44,6 +44,7 @@
             Console.WriteLine();
 
 
+            // Test IInsurable
             Console.WriteLine("=== Interface Test - Insurable ===");
 
             foreach (IInsurable i in insurableCars)
@@ -54,7 +55,7 @@
             Console.WriteLine();
 
             // 2. Test Polymorphism
-            List<Car> cars = new List<Car>();
+            /*List<Car> cars = new List<Car>();
 
             cars.Add(new FuelCar("Mazda", "3", 2019, "DW60547", 56000, 30000, 50.0, 19.0));
             cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 25000, 40000, 75.0, 6.5));
@@ -78,7 +79,7 @@
                 {
                     Console.WriteLine($"Battery Level: {electric.BatteryLevel:F1}\n");
                 }
-            }
+            }*/
 
             Console.ReadKey();
         }
