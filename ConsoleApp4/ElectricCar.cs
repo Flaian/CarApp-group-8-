@@ -1,6 +1,6 @@
 ﻿namespace CarAppGroup8
 {
-    internal class ElectricCar : Car
+    public class ElectricCar : Car
     {
         public double BatteryCapacity { get; private set; }
         public double BatteryLevel { get; private set; }
@@ -14,18 +14,23 @@
             BatteryLevel = batteryCapacity;
         }
 
-        public override void UpdateEnergyLevel(double km)
+        public override string ToString()
         {
-            BatteryLevel -= km / KmPerKwh;
-            if (BatteryLevel < 0)
-            {
-                BatteryLevel = 0;
-            }
+            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {BatteryLevel}";
         }
 
-        public void Charge(double kwh)
+        public static ElectricCar FromString(string data)
         {
-            BatteryLevel = Math.Min(BatteryLevel + kwh, BatteryCapacity);
+            string[] parts = data.Split(',');
+            return new ElectricCar(
+                parts[1].Trim(),
+                parts[2].Trim(),
+                int.Parse(parts[3].Trim()),
+                parts[4].Trim(),
+                double.Parse(parts[5].Trim()),
+                double.Parse(parts[6].Trim())
+            );
         }
+
     }
 }

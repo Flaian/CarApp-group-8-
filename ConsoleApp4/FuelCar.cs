@@ -14,18 +14,25 @@
             FuelLevel = tankCapacity;
         }
 
-        public override void UpdateEnergyLevel(double km)
+
+        public override string ToString()
         {
-            FuelLevel -= km / KmPerLiter;
-            if (FuelLevel < 0)
-            {
-                FuelLevel = 0;
-            }
+            return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity},{KmPerLiter},{FuelLevel}";
         }
 
-        public void Refuel(double Liters)
+        public static FuelCar FromString(string data)
         {
-            FuelLevel = Math.Min(FuelLevel + Liters, TankCapacity);
+            string[] parts = data.Split(',');
+            return new FuelCar(
+                parts[1].Trim(),
+                parts[2].Trim(),
+                int.Parse(parts[3].Trim()),
+                parts[4].Trim(),
+                double.Parse(parts[5].Trim()),
+                double.Parse(parts[6].Trim())
+            );
+
+
         }
     }
 }
