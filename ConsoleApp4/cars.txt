@@ -1,2 +1,2 @@
 ElectricCar, Tesla, Ioniq 5, 2019, UA84232, 93, 7
-ElectricCar, Hyundai, EV6, 2024, UA84232, 97, 5
+ElectricCar, Polestar, Model 3, 2020, HT15367, 96, 7
