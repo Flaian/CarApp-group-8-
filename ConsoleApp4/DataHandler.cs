@@ -15,9 +15,26 @@
         {
             using (StreamWriter sw = new StreamWriter(FilePath))
             {
+                List<Car> uniqueCars = new List<Car>();
+
                 foreach (Car car in cars)
                 {
-                    sw.WriteLine(car.ToString());
+                    bool exists = false;
+
+                    foreach (Car c in uniqueCars)
+                    {
+                        if (c.LicensePlate == car.LicensePlate)
+                        {
+                            exists = true;
+                            break;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        uniqueCars.Add(car);
+                        sw.WriteLine(car.ToString());
+                    }
                 }
             }
         }
