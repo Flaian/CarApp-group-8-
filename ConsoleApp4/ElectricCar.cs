@@ -3,7 +3,6 @@
     public class ElectricCar : Car
     {
         public double BatteryCapacity { get; private set; }
-        public double BatteryLevel { get; private set; }
         public double KmPerKwh { get; private set; }
 
         public ElectricCar(string brand, string model, int year, string licensePlate, double batteryCapacity, double kmPerKwh)
@@ -11,12 +10,11 @@
         {
             BatteryCapacity = batteryCapacity;
             KmPerKwh = kmPerKwh;
-            BatteryLevel = batteryCapacity;
         }
 
         public override string ToString()
         {
-            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {BatteryLevel}";
+            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}";
         }
 
         public static ElectricCar FromString(string data)

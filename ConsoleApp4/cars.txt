@@ -1,2 +1,3 @@
-FuelCar, Mazda, 3, 2019, DW60547, 50,19,50
-ElectricCar, Tesla, Model 3, 2022, EL99999, 75, 6.5, 75
+FuelCar, Toyota, Corolla, 2022, AB12345, 50, 18
+ElectricCar, Tesla, Model 3, 2023, CD67890, 75, 6.5
+FuelCar, BMW, 320d, 2021, XY99999, 60, 15

@@ -3,7 +3,6 @@
     public class FuelCar : Car
     {
         public double TankCapacity { get; private set; }
-        public double FuelLevel { get; private set; }
         public double KmPerLiter { get; private set; }
 
         public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPerLiter)
@@ -11,13 +10,12 @@
         {
             TankCapacity = tankCapacity;
             KmPerLiter = kmPerLiter;
-            FuelLevel = tankCapacity;
         }
 
 
         public override string ToString()
         {
-            return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity},{KmPerLiter},{FuelLevel}";
+            return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity}, {KmPerLiter}";
         }
 
         public static FuelCar FromString(string data)
