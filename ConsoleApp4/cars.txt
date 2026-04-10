@@ -1,0 +1,2 @@
+FuelCar, Mazda, 3, 2019, DW60547, 50,19,50
+ElectricCar, Tesla, Model 3, 2022, EL99999, 75, 6.5, 75

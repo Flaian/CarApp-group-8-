@@ -22,7 +22,6 @@
             Year = year;
             LicensePlate = licensePlate;
         }
-
     }
 }
 
