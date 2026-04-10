@@ -25,6 +25,12 @@
         public List<Car> LoadCarsFromFile()
         {
             List<Car> cars = new List<Car>();
+
+            if (!File.Exists(FilePath))
+            {
+                return cars; // Return empty list if file doesn't exist
+            }
+
             using (StreamReader sr = new StreamReader(FilePath))
             {
                 string line;

@@ -1,3 +1,2 @@
-FuelCar, Toyota, Corolla, 2022, AB12345, 50, 18
-ElectricCar, Tesla, Model 3, 2023, CD67890, 75, 6.5
-FuelCar, BMW, 320d, 2021, XY99999, 60, 15
+ElectricCar, Tesla, Ioniq 5, 2019, UA84232, 93, 7
+ElectricCar, Hyundai, EV6, 2024, UA84232, 97, 5
