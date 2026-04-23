@@ -2,8 +2,10 @@
 {
     public class ElectricCar : Car
     {
-        public double BatteryCapacity { get; private set; }
-        public double KmPerKwh { get; private set; }
+        public double BatteryCapacity { get; set; }
+        public double BatteryLevel { get; set; }
+        public double KmPerKwh { get; set; }
+        public double Price { get; set; }
 
         public ElectricCar(string brand, string model, int year, string licensePlate, double batteryCapacity, double kmPerKwh)
             : base(brand, model, year, licensePlate)
@@ -14,7 +16,12 @@
 
         public override string ToString()
         {
-            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}";
+            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {BatteryLevel}, {Price}";
+        }
+
+        public override void UpdateEnergyLevel(double km)
+        {
+            // TODO
         }
 
         public static ElectricCar FromString(string data)

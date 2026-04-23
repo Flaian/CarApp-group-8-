@@ -24,7 +24,7 @@
 
         public override string ToString()
         {
-            return "";
+            return $"Brand: {Brand}, Model: {Model}, Year: {Year}, License Plate: {LicensePlate}, Odometer: {Odometer}";
         }
     }
 }
