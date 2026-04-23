@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CarAppGroup8
+﻿namespace CarAppGroup8
 {
     public class FileCarRepository : ICarRepository
     {
@@ -60,38 +56,43 @@ namespace CarAppGroup8
 
         public void Update(Car car)
         {
+
             List<Car> cars = new List<Car>(GetAll());
 
-            foreach (Car carCar in GetAll())
+            for (int i = 0; i < cars.Count; i++)
             {
-                if (carCar.LicensePlate == car.LicensePlate)
+                if (cars[i].LicensePlate == car.LicensePlate)
                 {
-                    cars[cars.FindIndex(carCarCar => carCarCar.LicensePlate == car.LicensePlate)] = car;
+                    cars[i] = car;
+                    break;
                 }
             }
 
             using (StreamWriter sw = new StreamWriter(FilePath, append: false))
             {
-                foreach (Car carCarCarCar in cars) // For traceability
-                    sw.WriteLine(carCarCarCar.ToString());
+                foreach (Car currentCar in cars)
+                    sw.WriteLine(currentCar.ToString());
             }
         }
 
         public void Delete(string licensePlate)
         {
+
             List<Car> cars = new List<Car>(GetAll());
 
-            Car car = GetByLicensePlate(licensePlate);
-
-            if (car != null)
+            for (int i = 0; i < cars.Count; i++)
             {
-                cars.Remove(cars[cars.FindIndex(carCar => carCar.LicensePlate == licensePlate)]);
+                if (cars[i].LicensePlate == licensePlate)
+                {
+                    cars.RemoveAt(i);
+                    break;
+                }
             }
 
             using (StreamWriter sw = new StreamWriter(FilePath))
             {
-                foreach (Car carCarCarCarCar in cars) // FOR THE LOOOOOOORE
-                    sw.WriteLine(carCarCarCarCar.ToString());
+                foreach (Car currentCar in cars)
+                    sw.WriteLine(currentCar.ToString());
             }
         }
     }

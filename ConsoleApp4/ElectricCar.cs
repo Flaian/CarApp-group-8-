@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {BatteryLevel}, {Price}, {Odometer}";
+            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {Odometer}";
         }
 
 
