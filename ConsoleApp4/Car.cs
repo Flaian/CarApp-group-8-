@@ -8,7 +8,7 @@
         public string Model { get; set; }
         public int Year { get; set; }
         public string LicensePlate { get; set; }
-        public double Odometer { get; protected set; }
+        public double Odometer { get; set; }
 
 
         // Constructor
