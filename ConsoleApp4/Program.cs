@@ -5,14 +5,27 @@
         static void Main(string[] args)
         {
             // Test of InMemoryCarRepository
-            ICarRepository repo = new InMemoryCarRepository();
+            // ICarRepository repo = new InMemoryCarRepository();
+            ICarRepository repo = new FileCarRepository("cars.txt");
             repo.Add(new FuelCar("Toyota", "Corolla", 2022, "AB12345", 50, 18, 45000));
             repo.Add(new ElectricCar("Tesla", "Model 3", 2023, "CD67890", 75, 6.5, 380000));
 
+            List<String> tempList = new List<String>();
             // Fetch all cars and print them
             foreach (Car car in repo.GetAll())
             {
-                Console.WriteLine($"{car.Brand} {car.Model} - {car.LicensePlate}");
+                // Here is the fix to avoid double shiet in the file
+                if (repo.GetByLicensePlate(car.LicensePlate) != null)
+                {
+                    if (tempList.Contains(car.LicensePlate))
+                    {
+                        repo.Delete(car.LicensePlate);
+                    }
+                    else
+                    {
+                        tempList.Add(car.LicensePlate);
+                    }
+                }
             }
 
             // Fetch a specific car by license plate
@@ -20,8 +33,10 @@
             Console.WriteLine(found != null ? $"Found: {found.Brand} {found.Model}" : "Car not found");
 
             // Delete a car and verify deletion
-            repo.Delete("AB12345");
+            // repo.Delete("AB12345");
             Console.WriteLine($"Number of cars: {repo.GetAll().Count()}"); // 1
+
+            repo.Update(new ElectricCar("Tesla", "Model 69", 2025, "CD67890", 80, 22, 15000));
 
 
 
