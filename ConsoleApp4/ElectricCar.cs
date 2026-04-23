@@ -19,10 +19,6 @@
             return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {BatteryLevel}, {Price}";
         }
 
-        public override void UpdateEnergyLevel(double km)
-        {
-            // TODO
-        }
 
         public static ElectricCar FromString(string data)
         {

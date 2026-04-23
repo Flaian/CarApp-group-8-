@@ -1,2 +1,6 @@
-ElectricCar, Tesla, Ioniq 5, 2019, UA84232, 93, 7
-ElectricCar, Polestar, Model 3, 2020, HT15367, 96, 7
+ElectricCar, Tesla, Ioniq 5, 2019, UA84232, 93, 7, 0, 0
+ElectricCar, Polestar, Model 3, 2020, HT15367, 96, 7, 0, 0
+ElectricCar, Tesla, Ioniq 5, 2019, LT11093, 59, 7, 0, 0
+FuelCar, BMW, 320d, 2000, YQ75513, 64, 24, 0, 0
+FuelCar, BMW, Focus, 2014, FC73856, 77, 15, 0, 0
+ElectricCar, Nissan, Model Y, 2018, KM48880, 50, 5, 0, 0

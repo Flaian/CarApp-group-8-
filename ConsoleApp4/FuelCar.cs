@@ -20,10 +20,6 @@
             return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity}, {KmPerLiter}, {FuelLevel}, {Price}";
         }
 
-        public override void UpdateEnergyLevel(double km)
-        {
-            // TODO
-        }
 
         public static FuelCar FromString(string data)
         {
