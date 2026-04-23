@@ -4,7 +4,28 @@
     {
         static void Main(string[] args)
         {
-            DataHandler dh = new DataHandler("..\\..\\..\\cars.txt");
+            // Test of InMemoryCarRepository
+            ICarRepository repo = new InMemoryCarRepository();
+            repo.Add(new FuelCar("Toyota", "Corolla", 2022, "AB12345", 50, 18, 45000));
+            repo.Add(new ElectricCar("Tesla", "Model 3", 2023, "CD67890", 75, 6.5, 380000));
+
+            // Fetch all cars and print them
+            foreach (Car car in repo.GetAll())
+            {
+                Console.WriteLine($"{car.Brand} {car.Model} - {car.LicensePlate}");
+            }
+
+            // Fetch a specific car by license plate
+            Car found = repo.GetByLicensePlate("AB12345");
+            Console.WriteLine(found != null ? $"Found: {found.Brand} {found.Model}" : "Car not found");
+
+            // Delete a car and verify deletion
+            repo.Delete("AB12345");
+            Console.WriteLine($"Number of cars: {repo.GetAll().Count()}"); // 1
+
+
+
+            /*DataHandler dh = new DataHandler("..\\..\\..\\cars.txt");
 
             // Load cars from file
             List<Car> cars = dh.LoadCarsFromFile();
@@ -20,11 +41,11 @@
             }
 
             // Save updated list to file
-            dh.SaveCarsToFile(cars);
+            dh.SaveCarsToFile(cars);*/
         }
 
 
-        // Method to generate random cars and add them to the list
+        /*// Method to generate random cars and add them to the list
         static Car CreateRandomCar(List<Car> cars)
         {
             Random rnd = new Random();
@@ -95,6 +116,6 @@
                     return licensePlate;
                 }
             }
-        }
+        }*/
     }
 }

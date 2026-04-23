@@ -12,12 +12,13 @@
 
 
         // Constructor
-        public Car(string brand, string model, int year, string licensePlate)
+        public Car(string brand, string model, int year, string licensePlate, double odometer)
         {
             Brand = brand;
             Model = model;
-            Year = year;
+            Year = year;    
             LicensePlate = licensePlate;
+            Odometer = odometer;
         }
 
         public override string ToString()

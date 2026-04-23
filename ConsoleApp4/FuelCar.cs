@@ -7,8 +7,8 @@
         public double KmPerLiter { get; set; }
         public double Price { get; set; }
 
-        public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPerLiter)
-            : base(brand, model, year, licensePlate)
+        public FuelCar(string brand, string model, int year, string licensePlate, double tankCapacity, double kmPerLiter, double odometer)
+            : base(brand, model, year, licensePlate, odometer)
         {
             TankCapacity = tankCapacity;
             KmPerLiter = kmPerLiter;
@@ -17,7 +17,7 @@
 
         public override string ToString()
         {
-            return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity}, {KmPerLiter}, {FuelLevel}, {Price}";
+            return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity}, {KmPerLiter}, {FuelLevel}, {Price}, {Odometer}";
         }
 
 
@@ -30,7 +30,8 @@
                 int.Parse(parts[3].Trim()),
                 parts[4].Trim(),
                 double.Parse(parts[5].Trim()),
-                double.Parse(parts[6].Trim())
+                double.Parse(parts[6].Trim()),
+                double.Parse(parts[7].Trim())
             );
 
 
