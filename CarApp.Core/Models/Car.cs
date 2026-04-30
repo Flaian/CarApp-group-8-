@@ -1,4 +1,4 @@
-﻿namespace CarAppGroup8
+﻿namespace CarApp.Core.Models
 {
 
     public abstract class Car
@@ -16,7 +16,7 @@
         {
             Brand = brand;
             Model = model;
-            Year = year;    
+            Year = year;
             LicensePlate = licensePlate;
             Odometer = odometer;
         }

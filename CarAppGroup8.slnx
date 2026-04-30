@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="ConsoleApp4/CarAppGroup8.csproj" />
+  <Project Path="CarApp.Console/CarApp.Console.csproj" />
+  <Project Path="CarApp.Core/CarApp.Core.csproj" Id="59d160e0-5dc5-45af-9c29-ab9f35502a63" />
 </Solution>

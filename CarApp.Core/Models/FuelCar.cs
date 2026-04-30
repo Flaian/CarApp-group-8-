@@ -1,4 +1,4 @@
-﻿namespace CarAppGroup8
+﻿namespace CarApp.Core.Models
 {
     public class FuelCar : Car
     {
