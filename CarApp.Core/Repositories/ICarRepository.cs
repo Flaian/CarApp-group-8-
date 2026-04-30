@@ -1,5 +1,4 @@
-﻿using CarAppGroup8;
-using System.Collections.Generic;
+﻿using CarApp.Core.Models;
 
 public interface ICarRepository
 {
