@@ -1,31 +1,38 @@
 ﻿namespace CarAppGroup8
 {
-    internal class ElectricCar : Car
+    public class ElectricCar : Car
     {
-        public double BatteryCapacity { get; private set; }
-        public double BatteryLevel { get; private set; }
-        public double KmPerKwh { get; private set; }
+        public double BatteryCapacity { get; set; }
+        public double BatteryLevel { get; set; }
+        public double KmPerKwh { get; set; }
+        public double Price { get; set; }
 
-        public ElectricCar(string brand, string model, int year, string licensePlate, double batteryCapacity, double kmPerKwh)
-            : base(brand, model, year, licensePlate)
+        public ElectricCar(string brand, string model, int year, string licensePlate, double batteryCapacity, double kmPerKwh, double odometer)
+            : base(brand, model, year, licensePlate, odometer)
         {
             BatteryCapacity = batteryCapacity;
             KmPerKwh = kmPerKwh;
-            BatteryLevel = batteryCapacity;
         }
 
-        public override void UpdateEnergyLevel(double km)
+        public override string ToString()
         {
-            BatteryLevel -= km / KmPerKwh;
-            if (BatteryLevel < 0)
-            {
-                BatteryLevel = 0;
-            }
+            return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {Odometer}";
         }
 
-        public void Charge(double kwh)
+
+        public static ElectricCar FromString(string data)
         {
-            BatteryLevel = Math.Min(BatteryLevel + kwh, BatteryCapacity);
+            string[] parts = data.Split(',');
+            return new ElectricCar(
+                parts[1].Trim(),
+                parts[2].Trim(),
+                int.Parse(parts[3].Trim()),
+                parts[4].Trim(),
+                double.Parse(parts[5].Trim()),
+                double.Parse(parts[6].Trim()),
+                double.Parse(parts[7].Trim())
+            );
         }
+
     }
 }

@@ -4,58 +4,141 @@
     {
         static void Main(string[] args)
         {
-
-            // 1. Test individual car types
-            FuelCar fuelCar = new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0);
-            ElectricCar electricCar = new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5);
-
-            fuelCar.ToggleEngine();
-            electricCar.ToggleEngine();
-
-            Trip trip1 = new Trip(fuelCar, 120, DateTime.Now, DateTime.Now.AddHours(2));
-            Trip trip2 = new Trip(electricCar, 60, DateTime.Now, DateTime.Now.AddHours(1));
-
-            fuelCar.Drive(trip1);
-            electricCar.Drive(trip2);
-
-            Console.WriteLine("=== Individual test ===");
-            Console.WriteLine($"FuelCar odometer: {fuelCar.Odometer} km");
-            Console.WriteLine($"Fuel level: {fuelCar.FuelLevel:F1} L");
-            Console.WriteLine();
-            Console.WriteLine($"ElectricCar odometer: {electricCar.Odometer} km");
-            Console.WriteLine($"Battery level: {electricCar.BatteryLevel:F1} kWh");
-
-            Console.WriteLine();
+            // Test of InMemoryCarRepository
+            // ICarRepository repo = new InMemoryCarRepository();
 
 
-            // 2. Test Polymorphism
-            List<Car> cars = new List<Car>();
+            ICarRepository repo = new FileCarRepository("cars.txt");
 
-            cars.Add(new FuelCar("Mazda", "3", 2019, "DW60547", 50.0, 19.0));
-            cars.Add(new ElectricCar("Tesla", "Model 3", 2022, "EL99999", 75.0, 6.5));
 
-            Console.WriteLine("=== Polymorphism TEST ===");
+            //File.WriteAllText("cars.txt", string.Empty); // Clear file before testing
 
-            foreach (Car car in cars)
+            // Add cars
+            repo.Add(new FuelCar("Toyota", "Corolla", 2022, "AB12345", 50, 18, 45000));
+            repo.Add(new ElectricCar("Tesla", "Model 3", 2023, "CD67890", 75, 6.5, 380000));
+
+            Console.WriteLine("=== AFTER ADD ===");
+            foreach (Car car in repo.GetAll())
             {
-                car.ToggleEngine();
-                Trip trip = new Trip(car, 60, DateTime.Now, DateTime.Now.AddHours(1));
-                car.Drive(trip);
-
-                Console.WriteLine($"{car.Brand} {car.Model}");
-                Console.WriteLine($"Odometer: {car.Odometer} km");
-
-                if (car is FuelCar fuel)
-                {
-                    Console.WriteLine($"Fuel Level: {fuel.FuelLevel:F1}\n");
-                }
-                if (car is ElectricCar electric)
-                {
-                    Console.WriteLine($"Battery Level: {electric.BatteryLevel:F1}\n");
-                }
+                Console.WriteLine(car);
             }
 
-            Console.ReadKey();
+            // Test GetByLicensePlate
+            Console.WriteLine("\n=== GET BY LICENSE PLATE ===");
+            Car found = repo.GetByLicensePlate("AB12345");
+            Console.WriteLine(found != null ? found.ToString() : "Car not found");
+
+            // Test Update
+            Console.WriteLine("\n=== AFTER UPDATE ===");
+            repo.Update(new FuelCar("Toyota", "Corolla", 2022, "AB12345", 60, 20, 46000));
+
+            foreach (Car car in repo.GetAll())
+            {
+                Console.WriteLine(car);
+            }
+
+            // Test Delete
+            repo.Delete("CD67890");
+
+            Console.WriteLine("\n=== AFTER DELETE ===");
+            foreach (Car car in repo.GetAll())
+            {
+                Console.WriteLine(car);
+            }
+
+
+
+            /*DataHandler dh = new DataHandler("..\\..\\..\\cars.txt");
+
+            // Load cars from file
+            List<Car> cars = dh.LoadCarsFromFile();
+
+            // Add random cars
+            cars.Add(CreateRandomCar(cars));
+
+            // Print list
+            Console.WriteLine("Current cars:\n");
+            foreach (Car car in cars)
+            {
+                Console.WriteLine(car.ToString());
+            }
+
+            // Save updated list to file
+            dh.SaveCarsToFile(cars);*/
         }
+
+
+        /*// Method to generate random cars and add them to the list
+        static Car CreateRandomCar(List<Car> cars)
+        {
+            Random rnd = new Random();
+
+            if (rnd.Next(2) == 0)
+            {
+                FuelCar fuelCar = new FuelCar(
+                    GetRandomFuelBrand(rnd), GetRandomFuelModel(rnd), rnd.Next(2000, 2025),
+                    GetRandomPlate(rnd, cars), rnd.Next(40, 80), rnd.Next(10, 25));
+                return fuelCar;
+            }
+
+            else
+            {
+                ElectricCar electricCar = new ElectricCar(
+                    GetRandomElectricBrand(rnd), GetRandomElectricModel(rnd), rnd.Next(2018, 2025),
+                    GetRandomPlate(rnd, cars), rnd.Next(50, 100), rnd.Next(4, 8));
+                return electricCar;
+            }
+        }
+
+        // Helper methods to generate random data
+        static string GetRandomFuelBrand(Random rnd)
+        {
+            string[] brands = { "Toyota", "BMW", "Audi", "Ford", "Volkswagen" };
+            return brands[rnd.Next(brands.Length)];
+        }
+
+        static string GetRandomFuelModel(Random rnd)
+        {
+            string[] models = { "Corolla", "320d", "A4", "Focus", "Golf" };
+            return models[rnd.Next(models.Length)];
+        }
+
+
+        static string GetRandomElectricBrand(Random rnd)
+        {
+            string[] brands = { "Tesla", "Polestar", "Nissan", "Hyundai", "Kia" };
+            return brands[rnd.Next(brands.Length)];
+        }
+
+        static string GetRandomElectricModel(Random rnd)
+        {
+            string[] models = { "Model 3", "Model Y", "Leaf", "Ioniq 5", "EV6" };
+            return models[rnd.Next(models.Length)];
+        }
+
+
+        static string GetRandomPlate(Random rnd, List<Car> cars)
+        {
+            while (true)
+            {
+                string licensePlate = $"{(char)rnd.Next('A', 'Z')}{(char)rnd.Next('A', 'Z')}{rnd.Next(10000, 99999)}";
+
+                bool isDuplicate = false;
+                foreach (Car car in cars)
+                {
+                    if (car.LicensePlate == licensePlate)
+                    {
+                        isDuplicate = true;
+                        Console.WriteLine("Duplicate license plate generated: " + licensePlate);
+                        break; // Skip duplicate license plate
+                    }
+                }
+
+                if (isDuplicate == false)
+                {
+                    return licensePlate;
+                }
+            }
+        }*/
     }
 }

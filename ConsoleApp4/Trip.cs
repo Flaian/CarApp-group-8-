@@ -1,4 +1,4 @@
-﻿namespace CarAppGroup8
+﻿/*namespace CarAppGroup8
 {
     public class Trip
     {
@@ -45,4 +45,4 @@
                    $"Varighed: {CalculateDuration()}";
         }
     }
-}
+}*/
