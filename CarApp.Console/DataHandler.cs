@@ -1,7 +1,7 @@
 ﻿using CarApp.Core.Models;
 
 
-namespace CarAppGroup8
+namespace CarApp.ConsoleApp
 {
     public class DataHandler
     {

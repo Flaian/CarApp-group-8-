@@ -1,7 +1,7 @@
 ﻿using CarApp.Core.Models;
 using CarApp.Core.Repositories;
 
-namespace CarAppGroup8
+namespace CarApp.ConsoleApp
 {
     internal class Program
     {
