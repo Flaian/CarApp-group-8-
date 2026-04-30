@@ -1,4 +1,7 @@
-﻿namespace CarAppGroup8
+﻿using CarApp.Core.Models;
+
+
+namespace CarAppGroup8
 {
     public class DataHandler
     {

@@ -1,4 +1,6 @@
-﻿namespace CarApp.Core.Models
+﻿using CarApp.Core.Models;
+
+namespace CarApp.Core.Repositories
 {
     public class FileCarRepository : ICarRepository
     {

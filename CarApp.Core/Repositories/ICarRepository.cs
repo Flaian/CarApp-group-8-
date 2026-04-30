@@ -1,5 +1,6 @@
 ﻿using CarApp.Core.Models;
 
+
 public interface ICarRepository
 {
     IEnumerable<Car> GetAll();

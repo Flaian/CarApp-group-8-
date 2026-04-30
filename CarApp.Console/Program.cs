@@ -1,4 +1,7 @@
-﻿namespace CarAppGroup8
+﻿using CarApp.Core.Models;
+using CarApp.Core.Repositories;
+
+namespace CarAppGroup8
 {
     internal class Program
     {
