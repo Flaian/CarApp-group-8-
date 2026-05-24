@@ -92,7 +92,9 @@ Title="CarApp" Height="500" Width="700">
         <!-- SEKTION 4: Billiste -->
         <!-- TODO: ItemsSource bundet til Cars, SelectedItem bundet til SelectedCar -->
 
-        <ListView Grid.Row="3" ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar, Mode=TwoWay}">
+        <ListView Grid.Row="3" 
+                  ItemsSource="{Binding Cars}" 
+                  SelectedItem="{Binding SelectedCar, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="120"/>

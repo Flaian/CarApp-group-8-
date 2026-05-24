@@ -22,6 +22,7 @@ namespace CarApp.Wpf.ViewModels
             {
                 _selectedCar = value;
                 OnPropertyChanged(nameof(SelectedCar));
+                (AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 (UpdateCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 (DeleteCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
             }
@@ -65,15 +66,16 @@ namespace CarApp.Wpf.ViewModels
         {
             // TODO: Returner true hvis SelectedCar ikke er null og
             // LicensePlate, Brand og Model ikke er tomme
+
             if (SelectedCar != null &&
-             !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate) &&
-             !string.IsNullOrWhiteSpace(SelectedCar.Brand) &&
-             !string.IsNullOrWhiteSpace(SelectedCar.Model))
+                !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate) &&
+                !string.IsNullOrWhiteSpace(SelectedCar.Brand) &&
+                !string.IsNullOrWhiteSpace(SelectedCar.Model))
             {
                 return true;
             }
+            return false;
 
-            return false; // midlertidig
         }
 
 
@@ -86,9 +88,7 @@ namespace CarApp.Wpf.ViewModels
             Cars.Add(SelectedCar);
 
             // TODO: Nulstil SelectedCar til en ny tom FuelCar
-
             SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
-
         }
 
 
