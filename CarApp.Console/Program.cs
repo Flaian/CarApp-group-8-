@@ -14,7 +14,7 @@ namespace CarApp.ConsoleApp
             ICarRepository repo = new FileCarRepository("cars.txt");
 
 
-            File.WriteAllText("cars.txt", string.Empty); // Clear file before testing
+            //File.WriteAllText("cars.txt", string.Empty); // Clear file before testing
 
             // Add cars
             repo.Add(new FuelCar("Toyota", "Corolla", 2022, "AB12345", 50, 18, 45000));

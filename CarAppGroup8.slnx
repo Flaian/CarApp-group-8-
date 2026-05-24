@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="CarApp.Console/CarApp.Console.csproj" />
   <Project Path="CarApp.Core/CarApp.Core.csproj" Id="59d160e0-5dc5-45af-9c29-ab9f35502a63" />
+  <Project Path="CarApp.Tests/CarApp.Tests.csproj" Id="dd557a37-6c98-414f-a4c6-5574faaa13ff" />
+  <Project Path="CarApp.Wpf/CarApp.Wpf.csproj" Id="4a333bd5-cffc-4a2d-af66-7aebf9cdccf4" />
 </Solution>
