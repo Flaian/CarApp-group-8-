@@ -23,14 +23,16 @@ Title="CarApp" Height="500" Width="700">
                             Margin="4">
                     <Label Content="Mærke"/>
                     <!-- TODO: TextBox bundet til SelectedCar.Brand -->
-                    <TextBox Text="{Binding SelectedCar.Brand, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedCar.Brand, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputFieldChanged"/>
                 </StackPanel>
 
                 <StackPanel Width="160" 
                             Margin="4">
                     <Label Content="Model"/>
                     <!-- TODO: TextBox bundet til SelectedCar.Model -->
-                    <TextBox Text="{Binding SelectedCar.Model, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedCar.Model, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputFieldChanged"/>
                 </StackPanel>
 
                 <StackPanel Width="80" 
@@ -44,7 +46,8 @@ Title="CarApp" Height="500" Width="700">
                             Margin="4">
                     <Label Content="Nummerplade"/>
                     <!-- TODO: TextBox bundet til SelectedCar.LicensePlate -->
-                    <TextBox Text="{Binding SelectedCar.LicensePlate, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding SelectedCar.LicensePlate, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputFieldChanged"/>
                 </StackPanel>
             </WrapPanel>
         </StackPanel>
@@ -94,7 +97,8 @@ Title="CarApp" Height="500" Width="700">
 
         <ListView Grid.Row="3" 
                   ItemsSource="{Binding Cars}" 
-                  SelectedItem="{Binding SelectedCar, Mode=TwoWay}">
+                  SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
+                  SelectionChanged="CarSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Brand" DisplayMemberBinding="{Binding Brand}" Width="120"/>

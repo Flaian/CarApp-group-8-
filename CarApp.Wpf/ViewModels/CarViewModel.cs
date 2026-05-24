@@ -67,27 +67,21 @@ namespace CarApp.Wpf.ViewModels
             // TODO: Returner true hvis SelectedCar ikke er null og
             // LicensePlate, Brand og Model ikke er tomme
 
-            if (SelectedCar != null &&
-                !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate) &&
-                !string.IsNullOrWhiteSpace(SelectedCar.Brand) &&
-                !string.IsNullOrWhiteSpace(SelectedCar.Model))
-            {
-                return true;
-            }
-            return false;
-
+            return SelectedCar != null
+                && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate)
+                && !string.IsNullOrWhiteSpace(SelectedCar.Brand)
+                && !string.IsNullOrWhiteSpace(SelectedCar.Model);
         }
 
 
         private void AddCar()
         {
+            Car carToAdd = SelectedCar;
 
-            // TODO: Tilføj SelectedCar til _repository og til Cars-listen
+            _repository.Add(carToAdd);
+            Cars.Add(carToAdd);
 
-            _repository.Add(SelectedCar);
-            Cars.Add(SelectedCar);
-
-            // TODO: Nulstil SelectedCar til en ny tom FuelCar
+            SelectedCar = null;
             SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
         }
 
