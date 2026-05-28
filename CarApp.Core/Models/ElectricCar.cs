@@ -19,7 +19,6 @@
             return $"ElectricCar, {Brand}, {Model}, {Year}, {LicensePlate}, {BatteryCapacity}, {KmPerKwh}, {Odometer}";
         }
 
-
         public static ElectricCar FromString(string data)
         {
             string[] parts = data.Split(',');
@@ -33,6 +32,5 @@
                 double.Parse(parts[7].Trim())
             );
         }
-
     }
 }

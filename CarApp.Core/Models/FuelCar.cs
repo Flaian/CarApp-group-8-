@@ -14,12 +14,10 @@
             KmPerLiter = kmPerLiter;
         }
 
-
         public override string ToString()
         {
             return $"FuelCar, {Brand}, {Model}, {Year}, {LicensePlate}, {TankCapacity}, {KmPerLiter}, {Odometer}";
         }
-
 
         public static FuelCar FromString(string data)
         {
@@ -33,8 +31,6 @@
                 double.Parse(parts[6].Trim()),
                 double.Parse(parts[7].Trim())
             );
-
-
         }
     }
 }

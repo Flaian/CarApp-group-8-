@@ -1,6 +1,5 @@
 ﻿namespace CarApp.Core.Models
 {
-
     public abstract class Car
     {
         // Properties
@@ -9,7 +8,6 @@
         public int Year { get; set; }
         public string LicensePlate { get; set; }
         public double Odometer { get; set; }
-
 
         // Constructor
         public Car(string brand, string model, int year, string licensePlate, double odometer)
