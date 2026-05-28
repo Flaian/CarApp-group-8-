@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="CarApp.Wpf.Views.TripView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarApp.Wpf.Views"
+        mc:Ignorable="d"
+        Height="500" Width="700">
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="🗺 Trips"
+                   FontSize="22"
+                   FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,8">
+            <WrapPanel>
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Car"/>
+                    <ComboBox ItemsSource="{Binding AvailableCars}"
+                              SelectedItem="{Binding SelectedCar, Mode=TwoWay}"
+                              DisplayMemberPath="LicensePlate"/>
+                </StackPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Distance (km)"/>
+                    <TextBox Padding="2" 
+                             Text="{Binding Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputTextChanged"/>
+                </StackPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Start Time"/>
+                    <DatePicker SelectedDate="{Binding SelectedTrip.StartTime, Mode=TwoWay}"/>
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,8">
+            <Button Content="Add"
+                    Command="{Binding AddTripCommand}"
+                    Width="90"
+                    Margin="4"/>
+            <Button Content="Delete"
+                    Command="{Binding DeleteTripCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+        </StackPanel>
+
+        <ListView Grid.Row="3"
+                  ItemsSource="{Binding Trips}"
+                  SelectedItem="{Binding SelectedTrip, Mode=TwoWay}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Car"
+                                    DisplayMemberBinding="{Binding Car.LicensePlate}"
+                                    Width="120"/>
+
+                    <GridViewColumn Header="Distance (km)"
+                                    DisplayMemberBinding="{Binding Distance}"
+                                    Width="100"/>
+
+                    <GridViewColumn Header="Start Time"
+                                    DisplayMemberBinding="{Binding StartTime}"
+                                    Width="180"/>
+
+                    <GridViewColumn Header="Duration (min)"
+                                    DisplayMemberBinding="{Binding DurationMinutes, StringFormat={}{0:F0}}"
+                                    Width="120"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
+    </Grid>
+    
+</UserControl>

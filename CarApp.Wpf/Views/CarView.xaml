@@ -1,0 +1,138 @@
+﻿<!-- CarApp.Wpf/Views/CarView.xaml -->
+
+<UserControl x:Class="CarApp.Wpf.Views.CarView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarApp.Wpf"
+        mc:Ignorable="d"
+        Height="500" Width="700">
+
+    <Grid Margin="12">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+           Text="🚗 Cars"
+           FontSize="22"
+           FontWeight="Bold"/>
+        
+        <!-- SEKTION 1: Inputfelter -->
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,8">
+
+            <WrapPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Brand"/>
+                    <TextBox Padding="2" 
+                             Text="{Binding SelectedCar.Brand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        TextChanged="InputTextChanged"/>
+                </StackPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Model"/>
+                    <TextBox Padding="2"
+                             Text="{Binding SelectedCar.Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputTextChanged"/>
+                </StackPanel>
+
+                <StackPanel Width="80" Margin="4">
+                    <Label Content="Year"/>
+                    <TextBox Padding="2"
+                             Text="{Binding SelectedCar.Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Width="120" Margin="4">
+                    <Label Content="License Plate"/>
+                    <TextBox Padding="2"
+                             Text="{Binding SelectedCar.LicensePlate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="InputTextChanged"/>
+                </StackPanel>
+
+            </WrapPanel>
+
+        </StackPanel>
+
+        <!-- SEKTION 2: Handlingsknapper -->
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
+
+            <Button Content="Add"
+                    Command="{Binding AddCarCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+            <!-- UpdateCarCommand og DeleteCarCommand udleveres i Øvelse 6 -->
+
+            <Button Content="Update"
+                    Command="{Binding UpdateCarCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+            <Button Content="Delete"
+                    Command="{Binding DeleteCarCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+        </StackPanel>
+
+        <!-- SEKTION 3: Søgelinje -->
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,8">
+
+            <Label Content="Search License Plate:"/>
+
+            <TextBox Text="{Binding SearchPlate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Width="140"
+                     Margin="4,0"/>
+
+            <Button Content="Find"
+                    Command="{Binding FindCarCommand}"
+                    Width="70"
+                    Margin="4,0"/>
+
+        </StackPanel>
+
+        <!-- SEKTION 4: Billiste -->
+
+        <ListView Grid.Row="4"
+                  ItemsSource="{Binding Cars}"
+                  SelectedItem="{Binding SelectedCar, Mode=TwoWay}">
+
+            <ListView.View>
+
+                <GridView>
+
+                    <GridViewColumn Header="Brand"
+                                    DisplayMemberBinding="{Binding Brand}"
+                                    Width="120"/>
+
+                    <GridViewColumn Header="Model"
+                                    DisplayMemberBinding="{Binding Model}"
+                                    Width="120"/>
+
+                    <GridViewColumn Header="Year"
+                                    DisplayMemberBinding="{Binding Year}"
+                                    Width="60"/>
+
+                    <GridViewColumn Header="License Plate"
+                                    DisplayMemberBinding="{Binding LicensePlate}"
+                                    Width="120"/>
+
+                </GridView>
+
+            </ListView.View>
+
+        </ListView>
+
+    </Grid>
+
+</UserControl>
