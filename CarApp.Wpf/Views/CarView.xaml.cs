@@ -1,5 +1,4 @@
 ﻿using CarApp.Wpf.ViewModels;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace CarApp.Wpf.Views
@@ -7,7 +6,7 @@ namespace CarApp.Wpf.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class CarView : Window
+    public partial class CarView : UserControl
     {
         public CarView()
         {

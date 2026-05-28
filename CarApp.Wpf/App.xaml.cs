@@ -11,15 +11,17 @@ namespace CarApp.Wpf
         {
             base.OnStartup(e);
 
-            ICarRepository repository = new InMemoryCarRepository();
+            ICarRepository carRepo = new InMemoryCarRepository();
+            ITripRepository tripRepo = new InMemoryTripRepository();
 
-            var viewModel = new CarViewModel(repository);
+            var mainViewModel = new MainViewModel(carRepo, tripRepo);
+            var mainView = new MainView();
 
-            var view = new CarView();
+            mainView.DataContext = mainViewModel;
 
-            view.DataContext = viewModel;
+            MainWindow = mainView;
+            mainView.Show();
 
-            view.Show();
         }
     }
 }

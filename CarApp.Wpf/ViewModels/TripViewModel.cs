@@ -90,7 +90,15 @@ namespace CarApp.Wpf.ViewModels
             Distance = 0;
         }
 
+        public void RefreshCars()
+        {
+            AvailableCars.Clear();
 
+            foreach (Car car in _carRepository.GetAll())
+            {
+                AvailableCars.Add(car);
+            }
+        }
 
         private void DeleteTrip()
         {

@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using CarApp.Wpf.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CarApp.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for TripView.xaml
     /// </summary>
-    public partial class TripView : Window
+    public partial class TripView : UserControl
     {
         public TripView()
         {
             InitializeComponent();
         }
+
+        private void InputTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (DataContext is TripViewModel viewModel)
+            {
+                (viewModel.AddTripCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            }
+        }
     }
 }
+
+
