@@ -19,8 +19,7 @@ namespace CarApp.Wpf.ViewModels
             get => _selectedCar;
             set
             {
-                _selectedCar = value;
-                OnPropertyChanged(nameof(SelectedCar));
+                _selectedCar = value; OnPropertyChanged(nameof(SelectedCar));
 
                 (AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 (UpdateCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
