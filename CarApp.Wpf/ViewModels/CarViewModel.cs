@@ -133,8 +133,8 @@ namespace CarApp.Wpf.ViewModels
         private void DeleteCar()
         {
             var result = MessageBox.Show(
-                $"Vil du slette {SelectedCar.Brand} {SelectedCar.Model}?",
-                "Bekræft sletning",
+                $"Do you want to delete: {SelectedCar.Brand} {SelectedCar.Model}?",
+                "Confirm deletion",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning);
 

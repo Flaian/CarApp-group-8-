@@ -65,19 +65,19 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
 
-            <Button Content="Tilføj"
+            <Button Content="Add"
                     Command="{Binding AddCarCommand}"
                     Width="90"
                     Margin="4"/>
 
             <!-- UpdateCarCommand og DeleteCarCommand udleveres i Øvelse 6 -->
 
-            <Button Content="Opdater"
+            <Button Content="Update"
                     Command="{Binding UpdateCarCommand}"
                     Width="90"
                     Margin="4"/>
 
-            <Button Content="Slet"
+            <Button Content="Delete"
                     Command="{Binding DeleteCarCommand}"
                     Width="90"
                     Margin="4"/>
@@ -88,7 +88,7 @@
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,8">
 
-            <Label Content="Søg nummerplade:"/>
+            <Label Content="Search License Plate:"/>
 
             <TextBox Text="{Binding SearchPlate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Width="140"
@@ -111,7 +111,7 @@
 
                 <GridView>
 
-                    <GridViewColumn Header="Mærke"
+                    <GridViewColumn Header="Brand"
                                     DisplayMemberBinding="{Binding Brand}"
                                     Width="120"/>
 
@@ -119,11 +119,11 @@
                                     DisplayMemberBinding="{Binding Model}"
                                     Width="120"/>
 
-                    <GridViewColumn Header="År"
+                    <GridViewColumn Header="Year"
                                     DisplayMemberBinding="{Binding Year}"
                                     Width="60"/>
 
-                    <GridViewColumn Header="Nummerplade"
+                    <GridViewColumn Header="License Plate"
                                     DisplayMemberBinding="{Binding LicensePlate}"
                                     Width="120"/>
 
