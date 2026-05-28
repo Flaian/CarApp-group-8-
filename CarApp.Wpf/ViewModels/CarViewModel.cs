@@ -56,27 +56,40 @@ namespace CarApp.Wpf.ViewModels
 
         private bool CanAddCar()
         {
-            // TODO: Return true if SelectedCar is not null and LicensePlate, Brand and Model are not empty
-            return false;
+            return SelectedCar != null
+                && !string.IsNullOrWhiteSpace(SelectedCar.Brand)
+                && !string.IsNullOrWhiteSpace(SelectedCar.Model)
+                && SelectedCar.Year >= 1884
+                && SelectedCar.Year <= DateTime.Now.Year
+                && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
         }
 
         private void AddCar()
         {
-            // TODO: Add SelectedCar to _repository and to the Cars-list
-            // TODO: Reset SelectedCar to a new empty FuelCar
+            _repository.Add(SelectedCar);
+            Cars.Add(SelectedCar);
+
+            SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
         }
 
         private void FindCar()
         {
-            // TODO: Use _repository.GetByLicensePlate(SearchPlate)
-            // TODO: If found: Set SelectedCar = found car, clear SearchPlate
-            // TODO: If not found, show MessageBox.Show("Car not found")
+            Car foundCar = _repository.GetByLicensePlate(SearchPlate);
+
+            if (foundCar != null)
+            {
+                SelectedCar = foundCar;
+                SearchPlate = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Car not found");
+            }
         }
 
         private bool CanUpdateOrDelete()
         {
-            // TODO: Return true if SelectedCar's LicensePlate is not empty
-            return false;
+            return SelectedCar != null && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
         }
 
         private void UpdateCar()

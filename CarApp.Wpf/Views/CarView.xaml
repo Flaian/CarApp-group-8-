@@ -28,29 +28,29 @@
 
                 <StackPanel Width="160" Margin="4">
                     <Label Content="Brand"/>
-                    <!-- TODO: TextBox bound to SelectedCar.Brand -->
-                    <TextBox Text="{Binding TODO,
+                    <!-- TextBox bound to SelectedCar.Brand -->
+                    <TextBox Text="{Binding SelectedCar.Brand,
                                             UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Width="160" Margin="4">
                     <Label Content="Model"/>
-                    <!-- TODO: TextBox bound to SelectedCar.Model -->
-                    <TextBox Text="{Binding TODO,
+                    <!-- TextBox bound to SelectedCar.Model -->
+                    <TextBox Text="{Binding SelectedCar.Model,
                                             UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Width="80" Margin="4">
                     <Label Content="Year"/>
-                    <!-- TODO: TextBox bound to SelectedCar.Year -->
-                    <TextBox Text="{Binding TODO,
+                    <!-- TextBox bound to SelectedCar.Year -->
+                    <TextBox Text="{Binding SelectedCar.Year,
                                             UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Width="120" Margin="4">
                     <Label Content="License plate"/>
-                    <!-- TODO: TextBox bound to SelectedCar.LicensePlate -->
-                    <TextBox Text="{Binding TODO,
+                    <!-- TextBox bound to SelectedCar.LicensePlate -->
+                    <TextBox Text="{Binding SelectedCar.LicensePlate,
                                             UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
@@ -64,9 +64,9 @@
                     Orientation="Horizontal"
                     Margin="0,0,0,8">
 
-            <!-- TODO: Command bound to AddCarCommand -->
+            <!-- Command bound to AddCarCommand -->
             <Button Content="Add"
-                    Command="{Binding TODO}"
+                    Command="{Binding AddCarCommand}"
                     Width="90"
                     Margin="4"/>
 
@@ -91,15 +91,15 @@
 
             <Label Content="Search license plate:"/>
 
-            <!-- TODO: TextBox bound to SearchPlate -->
-            <TextBox Text="{Binding TODO,
+            <!-- TextBox bound to SearchPlate -->
+            <TextBox Text="{Binding SearchPlate,
                                     UpdateSourceTrigger=PropertyChanged}"
                      Width="140"
                      Margin="4,0"/>
 
-            <!-- TODO: Command bound to FindCarCommand -->
+            <!-- Command bound to FindCarCommand -->
             <Button Content="Find"
-                    Command="{Binding TODO}"
+                    Command="{Binding FindCarCommand}"
                     Width="70"
                     Margin="4,0"/>
 
@@ -107,10 +107,10 @@
 
 
         <!-- SECTION 4: Car list -->
-        <!-- TODO: ItemsSource bound to Cars, SelectedItem bound to SelectedCar -->
+        <!-- ItemsSource bound to Cars, SelectedItem bound to SelectedCar -->
         <ListView Grid.Row="3"
-                  ItemsSource="{Binding TODO}"
-                  SelectedItem="{Binding TODO, Mode=TwoWay}">
+                  ItemsSource="{Binding Cars}"
+                  SelectedItem="{Binding SelectedCar, Mode=TwoWay}">
 
             <ListView.View>
                 <GridView>
