@@ -1,6 +1,4 @@
-﻿using CarApp.Wpf.ViewModels;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace CarApp.Wpf.Views
 {
@@ -14,12 +12,5 @@ namespace CarApp.Wpf.Views
             InitializeComponent();
         }
 
-        private void InputTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (DataContext is CarViewModel viewModel)
-            {
-                (viewModel.AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
-            }
-        }
     }
 }

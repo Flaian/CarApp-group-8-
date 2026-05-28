@@ -22,7 +22,6 @@ namespace CarApp.Wpf.ViewModels
                 _selectedCar = value;
                 OnPropertyChanged(nameof(SelectedCar));
 
-                (AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 (UpdateCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
                 (DeleteCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
             }
@@ -37,7 +36,7 @@ namespace CarApp.Wpf.ViewModels
             {
                 _searchPlate = value;
                 OnPropertyChanged(nameof(SearchPlate));
-                (FindCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
+
             }
         }
 
@@ -71,47 +70,74 @@ namespace CarApp.Wpf.ViewModels
 
         // ── TODO METHODS ─────────────────────────────
 
+
+
         private bool CanAddCar()
+
         {
+
             return SelectedCar != null
-                && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate)
-                && !string.IsNullOrWhiteSpace(SelectedCar.Brand)
-                && !string.IsNullOrWhiteSpace(SelectedCar.Model);
+
+            && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate)
+
+            && !string.IsNullOrWhiteSpace(SelectedCar.Brand)
+
+            && !string.IsNullOrWhiteSpace(SelectedCar.Model);
+
         }
+
 
         private void AddCar()
+
         {
+
             _repository.Add(SelectedCar);
+
             Cars.Add(SelectedCar);
 
-            SelectedCar = null;
             SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
 
-            (AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
-            (UpdateCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
-            (DeleteCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
 
-        private void FindCar()
-        {
-            Car foundCar = _repository.GetByLicensePlate(SearchPlate);
 
-            if (foundCar != null)
+        private void FindCar()
+
+        {
+
+            Car found = _repository.GetByLicensePlate(SearchPlate);
+
+            if (found != null)
+
             {
-                SelectedCar = foundCar;
+
+                SelectedCar = found;
+
                 SearchPlate = string.Empty;
+
             }
+
             else
+
             {
-                MessageBox.Show($"No car found with license plate: {SearchPlate}", "Car Not Found");
+
+                MessageBox.Show($"Ingen bil fundet med nummerplade '{SearchPlate}'.",
+
+                "Ikke fundet", MessageBoxButton.OK,
+
+                MessageBoxImage.Information);
+
             }
+
         }
 
 
         private bool CanUpdateOrDelete()
+
         {
+
             return SelectedCar != null
-                && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
+
+            && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
 
         }
 
