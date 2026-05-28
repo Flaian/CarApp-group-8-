@@ -1,5 +1,4 @@
-﻿using CarApp.Core.Reposisitories;
-using CarApp.Core.Repositories;
+﻿using CarApp.Core.Repositories;
 using CarApp.Wpf.ViewModels;
 using CarApp.Wpf.Views;
 using System.Windows;

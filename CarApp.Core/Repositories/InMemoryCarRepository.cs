@@ -1,6 +1,6 @@
 ﻿using CarApp.Core.Models;
 
-namespace CarApp.Core.Reposisitories;
+namespace CarApp.Core.Repositories;
 
 public class InMemoryCarRepository : ICarRepository
 {

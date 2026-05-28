@@ -59,8 +59,6 @@ namespace CarApp.Wpf.ViewModels
             return SelectedCar != null
                 && !string.IsNullOrWhiteSpace(SelectedCar.Brand)
                 && !string.IsNullOrWhiteSpace(SelectedCar.Model)
-                && SelectedCar.Year >= 1884
-                && SelectedCar.Year <= DateTime.Now.Year
                 && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
         }
 
@@ -83,7 +81,7 @@ namespace CarApp.Wpf.ViewModels
             }
             else
             {
-                MessageBox.Show("Car not found");
+                MessageBox.Show($"No cars were found with license plate '{SearchPlate}'", "Not found", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
