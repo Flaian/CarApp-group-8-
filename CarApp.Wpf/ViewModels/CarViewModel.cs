@@ -31,7 +31,12 @@ namespace CarApp.Wpf.ViewModels
         public string SearchPlate
         {
             get => _searchPlate;
-            set { _searchPlate = value; OnPropertyChanged(nameof(SearchPlate)); }
+            set
+            {
+                _searchPlate = value;
+                OnPropertyChanged(nameof(SearchPlate));
+                (FindCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            }
         }
 
         public ICommand AddCarCommand { get; }
@@ -61,27 +66,57 @@ namespace CarApp.Wpf.ViewModels
 
         private void AddCar()
         {
-            // TODO: Add SelectedCar to _repository and to the Cars-list
-            // TODO: Clear SelectedCar to a new empty FuelCar
+            _repository.Add(SelectedCar);
+            Cars.Add(SelectedCar);
+
+            SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
+
+            (AddCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (UpdateCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (DeleteCarCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
 
         private void FindCar()
         {
-            // TODO: Use _repository.GetByLicensePlate(SearchPlate)
-            // TODO: If found, set SelectedCar = found car, clear SearchPlate
-            // TODO: If not found, show MessageBox.Show("Car not found")
+            Car foundCar = _repository.GetByLicensePlate(SearchPlate.Trim());
+
+            if (foundCar != null)
+            {
+                SelectedCar = foundCar;
+                SearchPlate = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Car not found");
+            }
         }
 
         private bool CanUpdateOrDelete()
         {
-            // TODO: Return true if SelectedCar does not have an empty LicensePlate
-            return false; // temporary
+            return SelectedCar != null && !string.IsNullOrWhiteSpace(SelectedCar.LicensePlate);
         }
 
-        private void UpdateCar() { /* This method is given in exercise 6 */}
+        private void UpdateCar()
+        {
+            _repository.Update(SelectedCar);
+            RefreshCarList();
+        }
 
         private void DeleteCar()
-        { /* This method is given in exercise 6 */ }
+        {
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete {SelectedCar.Brand} {SelectedCar.Model}?",
+                "Confirm Delete",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                _repository.Delete(SelectedCar.LicensePlate);
+                Cars.Remove(SelectedCar);
+                SelectedCar = new FuelCar("", "", DateTime.Now.Year, "", 40, 10, 0);
+            }
+        }
 
         private void RefreshCarList()
         {
