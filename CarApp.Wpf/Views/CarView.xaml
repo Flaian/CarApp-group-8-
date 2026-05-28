@@ -1,12 +1,141 @@
-﻿<Window x:Class="CarApp.Wpf.MainWindow"
+﻿<!-- CarApp.Wpf/Views/CarView.xaml -->
+
+<Window x:Class="CarApp.Wpf.Views.CarView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarApp.Wpf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="CarApp"
+        Height="500"
+        Width="700">
+
+    <Grid Margin="12">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Input fields -->
+            <RowDefinition Height="Auto"/>
+            <!-- Buttons -->
+            <RowDefinition Height="Auto"/>
+            <!-- Search bar -->
+            <RowDefinition/>
+            <!-- List -->
+        </Grid.RowDefinitions>
+
+
+        <!-- SECTION 1: Input fields -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,8">
+
+            <WrapPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Brand"/>
+                    <!-- TODO: TextBox bound to SelectedCar.Brand -->
+                    <TextBox Text="{Binding TODO,
+                                            UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Width="160" Margin="4">
+                    <Label Content="Model"/>
+                    <!-- TODO: TextBox bound to SelectedCar.Model -->
+                    <TextBox Text="{Binding TODO,
+                                            UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Width="80" Margin="4">
+                    <Label Content="Year"/>
+                    <!-- TODO: TextBox bound to SelectedCar.Year -->
+                    <TextBox Text="{Binding TODO,
+                                            UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Width="120" Margin="4">
+                    <Label Content="License plate"/>
+                    <!-- TODO: TextBox bound to SelectedCar.LicensePlate -->
+                    <TextBox Text="{Binding TODO,
+                                            UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+            </WrapPanel>
+
+        </StackPanel>
+
+
+        <!-- SECTION 2: Action buttons -->
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,8">
+
+            <!-- TODO: Command bound to AddCarCommand -->
+            <Button Content="Add"
+                    Command="{Binding TODO}"
+                    Width="90"
+                    Margin="4"/>
+
+            <!-- UpdateCarCommand and DeleteCarCommand are provided in Exercise 6 -->
+            <Button Content="Update"
+                    Command="{Binding UpdateCarCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+            <Button Content="Delete"
+                    Command="{Binding DeleteCarCommand}"
+                    Width="90"
+                    Margin="4"/>
+
+        </StackPanel>
+
+
+        <!-- SECTION 3: Search bar -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,8">
+
+            <Label Content="Search license plate:"/>
+
+            <!-- TODO: TextBox bound to SearchPlate -->
+            <TextBox Text="{Binding TODO,
+                                    UpdateSourceTrigger=PropertyChanged}"
+                     Width="140"
+                     Margin="4,0"/>
+
+            <!-- TODO: Command bound to FindCarCommand -->
+            <Button Content="Find"
+                    Command="{Binding TODO}"
+                    Width="70"
+                    Margin="4,0"/>
+
+        </StackPanel>
+
+
+        <!-- SECTION 4: Car list -->
+        <!-- TODO: ItemsSource bound to Cars, SelectedItem bound to SelectedCar -->
+        <ListView Grid.Row="3"
+                  ItemsSource="{Binding TODO}"
+                  SelectedItem="{Binding TODO, Mode=TwoWay}">
+
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Brand"
+                                    DisplayMemberBinding="{Binding Brand}"
+                                    Width="120"/>
+
+                    <GridViewColumn Header="Model"
+                                    DisplayMemberBinding="{Binding Model}"
+                                    Width="120"/>
+
+                    <GridViewColumn Header="Year"
+                                    DisplayMemberBinding="{Binding Year}"
+                                    Width="60"/>
+
+                    <GridViewColumn Header="License plate"
+                                    DisplayMemberBinding="{Binding LicensePlate}"
+                                    Width="120"/>
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
 
     </Grid>
+
 </Window>
